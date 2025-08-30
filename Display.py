@@ -67,7 +67,7 @@ def DisplayPowerInfo(st,powers):
                         if power in st.session_state.character["powers"]:
                             st.session_state.character["powers"].remove(power)  
                 else:
-                    st.write("Power is a pre-requisite for another power and will not be removed")
+                    st.write("Power is a pre-requisite for another power and cannot be removed")
 
 
 def display_powers(st):
