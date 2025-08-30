@@ -1,0 +1,457 @@
+<Origins>
+	<Origin>
+	  <name>Alien</name>
+	  <description>The character is not human and probably not from Earth or at least Earth-616. The Marvel Multiverse features all sorts of different alien races. The most common of these—Kree, Skrulls and so on—have their own entries. If the character doesn't fit one of those, then this Origin applies.</description>
+	  <examples>Devil Dinosaur, Gamora, Groot, Rocket Raccoon</examples>
+	  <tags>Alien Heritage, Extreme Appearance (Common)</tags>
+	  <suggestedOccupation>Outsider</suggestedOccupation>
+	  <traits>None</traits>
+	  <powers>None</powers>
+	  <preRequisites>None</preRequisites>
+	  <limitation>None</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Alien: Kree</name>
+	  <description>The character is a member of the Kree, a humanoid race from the planet Hala who formed the interstellar Kree Empire in the region of space known as the Large Magellanic Cloud. They resemble humans but are stronger and tougher. Many of them have blue skin, but a good number of them have pink skin. The air on Hala has much more nitrogen in it, and Kree who are raised in it (or something like it) have a hard time breathing the air on Earth.</description>
+	  <examples>Captain Marvel (Mar-Vell), Hulkling (Half Skrull and Half Kree), Magnitron (Yon-Rogg), Ronan the Accuser</examples>
+	  <tags>Alien Heritage, Extreme Appearance (If Blue-Skinned)</tags>
+	  <suggestedOccupation>Outsider</suggestedOccupation>
+	  <traits>Breathe Different, Enhanced Physique</traits>
+	  <powers>None</powers>
+	  <preRequisites>None</preRequisites>
+	  <limitation>None</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Alien: Shi'ar</name>
+	  <description>The character is a member of the Shi'ar, an avian humanoid race from the planet Chandilar who formed the interstellar Shi'ar Empire in the Shi'ar Galaxy. They resemble humans but are much stronger and have feathers instead of hair on their heads.</description>
+	  <examples>Adam-X, Deathbird, Majestrix Lilandra Neramani</examples>
+	  <tags>Alien Heritage, Extreme Appearance</tags>
+	  <suggestedOccupation>Outsider</suggestedOccupation>
+	  <traits>Enhanced Physique</traits>
+	  <powers>None</powers>
+	  <preRequisites>None</preRequisites>
+	  <limitation>None</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Alien: Skrull</name>
+	  <description>The character is a member of the Skrull, a reptilian humanoid race of shape-shifters who formed the interstellar Skrull Empire. In their natural form, they have green skin, red or green eyes, pointed ears and furrowed chins. They sprang from the planet Skrullos in the Andromeda Galaxy. The Original Skrulls could not shape-shift, but the Celestials experimented on them to form Eternal Skrulls and Deviant Skrulls, much like they did with humans on Earth. The Deviant Skrulls became the dominant form of the species, driving the Originals to extinction.</description>
+	  <examples>Hulkling (Half Skrull and Half Kree), Lyja, Super-Skrull (Kl'rt)</examples>
+	  <tags>Alien Heritage, Extreme Appearance (In Their Natural Form)</tags>
+	  <suggestedOccupation>Outsider</suggestedOccupation>
+	  <traits>None</traits>
+	  <powers>Disguise, Extended Reach, Flexible Bones, Shape-Shift, Slip Free</powers>
+	  <preRequisites>None</preRequisites>
+	  <limitation>None</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Atlantean</name>
+	  <description>The character is a member Homo mermanus, a variant race of humanity. Atlanteans breathe water through gills on both sides of their neck, and they cannot breathe air for longer than ten minutes. If they live in the Atlantic Ocean, they likely have blue skin and hail from Atlantis. If they come from the Pacific Ocean, they likely have green skin and live in Lemuria.</description>
+	  <examples>Attuma, Sub-Mariner (Namor), Namora, Warlord Krang</examples>
+	  <tags>Amphibious, Extreme Appearance</tags>
+	  <suggestedOccupation>Outsider</suggestedOccupation>
+	  <traits>Breathe Different, Enhanced Physique</traits>
+	  <powers>Heightened Senses, Speed Swim</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Deviant</name>
+	  <description>The character is a member of Homo descendus, a variant race of humanity created by the Celestials. They are scattered across Earth, but they mainly live in underground cities beneath the Pacific Ocean, close to Lemuria. Only one hundred Deviants were Originally created, but many more have been born over the millennia since then. They vary a great deal physically, coming in all sizes, shapes, colors and textures. Each is born with a unique physical mutation, and they have the latent genetic ability to develop powers, much like mutants. Eternals are compelled to kill Deviant mutates as part of their principle "Correct excess deviation."</description>
+	  <examples>Brother Tode, Karkas, Kro</examples>
+	  <tags>Extreme Appearance, Hunted</tags>
+	  <suggestedOccupation>Outsider</suggestedOccupation>
+	  <traits>none</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Eternal</name>
+	  <description>The character is a member of Homo immortalis, a variant race of humanity created by the Celestials. They are scattered across Earth, but their headquarters lies in the city of Olympia, in the mountains in Greece and folded into an echo Dimension. Some live on Titan (a moon of Saturn) instead. The Eternals live by three principles: Protect Celestials. Protect the Machine (a sentient A.I. deeply connected with the Earth). Correct excess deviation. Only one hundred Eternals were Originally created. Only two have been born since; Thanos and Eros. The character is either one of the lesser-known one hundred or a new Eternal brought to life through extraordinary means. Through a ritual usually initiated by the Prime Eternal (their official leader), Eternals can be called to be part of a collective being known as the Uni-Mind.</description>
+	  <examples>Ikaris, Sersi, Sprite, Thanos, Thena</examples>
+	  <tags>Eternally Immortal, Mahd Wy'ry</tags>
+	  <suggestedOccupation>Outsider</suggestedOccupation>
+	  <traits>none</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>High Tech</name>
+	  <description>The character's powers arise from high-tech devices that are well beyond the limits of modern-day engineering. This can come in many forms.</description>
+	  <examples>Doctor Octopus (Otto Octavius), Gauntlet (Joseph Green), Mysterio (Quentin Beck), the Trapster</examples>
+	  <tags>none</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>Tech Reliance</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>High Tech: Android</name>
+	  <description>The character is an artificial person. Their body (when they have one) is made of plastic, metal and circuitry rather than flesh and blood. Their powers come from technology embedded in their artificial body.</description>
+	  <examples>Human Torch (Jim Hammond), Jocasta, Machine Man, Vision</examples>
+	  <tags>Extreme Appearance (common)</tags>
+	  <suggestedOccupation>Outsider</suggestedOccupation>
+	  <traits>Tech Reliance</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>High Tech: Battle Suit</name>
+	  <description>The character wears a high-tech suit that grants them powers. When the battle suit is removed, the character no longer has access to the powers it grants. They are entirely—or at least mostly—normal underneath. Most characters with this Origin have the Extreme Appearance tag when wearing their battle suit.</description>
+	  <examples>Iron Man (Tony Stark), Ironheart, War Machine</examples>
+	  <tags>Extreme Appearance (common when in Battle Suit)</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>Tech Reliance</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>High Tech: Cybernetics</name>
+	  <description>The character has high tech, surgically embedded implants that grant them powers. These cannot be removed without great care or pain. If the implants are obvious, the character gets the Extreme Appearance tag. Otherwise, the implants have been hidden inside their body (as with the lacing of Wolverine's skeleton with adamantium) and might be visible only when in use (like when Wolverine uses his claws), if then.</description>
+	  <examples>Deathlok (all of them), Sabretooth, Winter Soldier, Wolverine (Logan)</examples>
+	  <tags>Extreme Appearance (common)</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>Tech Reliance</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>High Tech: Pym Particles</name>
+	  <description>The character uses Pym particles (named after their inventor, Henry Pym) to dramatically grow or shrink in size. After long-enough exposure to Pym particles, many people are able to generate such particles on their own without the need of external aid. They may still need to use extra Pym Particles to reach extremely large or small sizes.</description>
+	  <examples>Ant-Man (Scott Lang), Giant-Man (Rax Malhotra), Wasp (Janet Van Dyne)</examples>
+	  <tags>none</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>Tech Reliance (at first)</traits>
+	  <powers>Grow 1, Shrink 1 (at least)</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Inhuman</name>
+	  <description>The character is a member of Homo sapiens inhumanus, a variant race of humanity genetically engineered by the Kree. For millennia, they lived isolated from the world, but they emerged in recent years, led by Black Bolt. All Inhumans carry a latent gene that can be activated by the Terrigen Mist. The explosion of a Terrigen Bomb spread the mist across the entire planet, revealing that many humans (including Kamala Khan) had Inhuman genetics. Black Bolt was later forced to destroy the Inhumans, leaving few outside of the royal family alive. The character is one of those rare Inhumans who survived.</description>
+	  <examples>Black Bolt, Crystal, Karnak, Lockjaw, Medusa, Ms. Marvel (Kamala Khan)</examples>
+	  <tags>Inhuman Genes</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>none</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Magic</name>
+	  <description>The character's powers arise from supernatural means. There are many different traditions within magic, each with their own teachings.</description>
+	  <examples>Clea, Doctor Voodoo (Jericho Drumm), Enchantress</examples>
+	  <tags>Supernatural</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>none</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Magic: Chaos Magic</name>
+	  <description>The character is able to use chaos magic, which allows them to bend reality to their will. It stems from the ancient god Chthon.</description>
+	  <examples>Morgan Le Fay, Scarlet Witch, Wiccan</examples>
+	  <tags>Chaotic, Supernatural</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>none</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Magic: Demonic</name>
+	  <description>The character taps into (or is cursed by) the powers of Hell. They may be a native of one of the Nine Circles of Hell, or their powers might simply come from a Hellish source.</description>
+	  <examples>Belasco, Blackheart, Daimon Hellstrom, Dormammu</examples>
+	  <tags>Cursed, Supernatural</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>none</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Magic: Sorcery</name>
+	  <description>The character's powers arise from the study and practice of sorcery.</description>
+	  <examples>Agatha Harkness, Ancient One (Yao), Doctor Strange, Magik, Wong</examples>
+	  <tags>Sorcerous, Supernatural</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>none</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Monstrous</name>
+	  <description>The character is some kind of monster. They may have a human form—or may have once been human—but they get their powers from their unnatural monstrousness.</description>
+	  <examples>Cullen Bloodstone, Living Mummy, Man-Thing</examples>
+	  <tags>none</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>Monster</traits>
+	  <powers>none</powers>
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+	  <name>Monstrous: Vampire</name>
+	  <description>The character was once alive but was embraced by a vampire and has risen from death as a vampire too. They can transmit this magical disease to victims of their choosing. When a character becomes a vampire, they go up one rank and gain the listed tags, traits and powers. They do not gain any additional powers or traits from this bump in rank, but they do gain 5 ability points and add +1 to their damage multiplier. If they have the Heroic tag, they also add 1 to their Karma.</description>
+	  <examples>Baron Dracula, Blade (half vampire)</examples>
+	  <tags>Alternate Forms: Bat/Mist/Wolf, Diseased, Imageless</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>Anathema: Garlic/Holy Symbols (including Holy Water)/Sunshine, Bloodthirsty, Monster, Weaknesses: Silver/Wood</traits>
+	  <powers>Animal Communication: Bats/Rodents, Command, Healing Factor, Leech Life, Mighty 1, Sturdy 2, Telepathic Link</powers>	  
+	  <limitation>Unless the character has another Origin, they cannot choose other powers.</limitation>
+	  <preRequisites>none</preRequisites>
+	</Origin>
+
+	<Origin>
+	  <name>Monstrous: Werewolf</name>
+	  <description>The character is afflicted with lycanthropy, a magical disease that causes them to take on the shape of a werewolf during the three nights of the full moon. They can transmit this magical disease to victims of their choosing who survive their attacks. When a character becomes a werewolf, they gain the Lunar Transformation and Alternate Form tags. When the character takes on their werewolf form, they go up one rank and gain the rest of the listed tags, traits and powers. They do not gain any additional powers or traits from this bump in rank, but they do gain 5 ability points and add +1 to their damage multiplier. If they have the Heroic tag, they also add 1 to their Karma. When they return to human form, they lose the benefits of their werewolf form. The character can switch forms voluntarily at any point—except during the three nights that the moon is at its fullest. On those nights, while the moon is above the horizon, the character must transform into a werewolf and is ruled by their animal nature. They cannot help but hunt and attack any people or creatures they come across, no matter if they are friend or foe.</description>
+	  <examples>Werewolf by Night (Jack Russell), Werewolf by Night (Jake Gomez)</examples>
+	  <tags>Alternate Form: Werewolf/Wolf, Extreme Appearance (in werewolf form), Lunar Transformation</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>Berserker, Monster, Weakness: Silver</traits>
+	  <powers>Evasion, Healing Factor, Heightened Senses, Mighty 1, Sturdy 2</powers>	 
+	  <limitation>Unless the character has another Origin, they cannot choose other powers.</limitation>
+	  <preRequisites>none</preRequisites>
+	</Origin>
+
+	<Origin>
+	  <name>Mutant</name>
+	  <description>The character's powers spring from them being a member of the subspecies Homo superior. They have a latent X-Gene that grants them powers, often triggered at adolescence.</description>
+	  <examples>Cyclops, Jean Grey, Storm, Wolverine (Logan), Wolverine (Laura Kinney)</examples>
+	  <tags>Hounded, Krakoan, X-Gene</tags>
+	  <suggestedOccupation>none</suggestedOccupation>
+	  <traits>none</traits>
+	  <powers>none</powers>	  
+	  <preRequisites>none</preRequisites>
+	  <limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Mythic</name>
+		<description>The character is a creature or person Of myth and legend. While they may appear human, they are something else.</description>
+		<examples>Angela (Aldrif Odinsdottir),Fairies,Malekith</examples>		
+		<tags>Supernatural</tags>
+		<traits>none</traits>
+		<powers>none</powers>
+		<suggestedOccupation>Outsider</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Mythic: Asgardian</name>
+		<description>The character is a member Of the Asgardian people, resembling the Norse gods. They call Asgard their home. The character can be one Of the many gods Who have been named throughout history, or they can be one of the lesser-known gods Of Asgard. They should choose something that they are the god Of.</description>
+		<examples>Hela, HeimdalL,Loki,Sif,Thor (Odinson)</examples>
+		<tags> Supernatural, Worshipped</tags>
+		<traits> God Heritage, Enhanced Physique</traits>
+		<powers>none</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Mythic: Olympian</name>
+		<description>The character is a member Of the Olympian people, resembling the gods Of Ancient Greece and Rome. They call Olympus their home. The character can be one Of the many gods Who have been named throughout history, or they can be one of the lesser-known gods Of Olympus. They should choose something that they are the god of.</description>
+		<examples>Ares,Athena,Hercules,Zeus</examples>
+		<tags>Supernatural,Worshipped</tags>
+		<traits>God Heritage,Enhanced Physique</traits>
+		<powers>none</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Special Training</name>
+		<description>The character's powers come from long hours Of practice. Their intense focus grants them abilities that would astonish most people.</description>
+		<examples>Hawkeye (Clint Barton),Hawkeye (Kate Bishop),Nick Fury Jr,Shang-Chi</examples>
+		<tags>none</tags>
+		<traits>Determination</traits>
+		<powers>none</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>Unless the character has another Origin, they cannot choose powers that grant them superhuman abilities. Allowed power sets include Martial Arts, Melee Weapons, Ranged Weapons, Shield Bearer and Tactics. They can also choose basic powers a regular human could reasonably have.</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Spirit of Vengeance</name>
+		<description>The character has been possessed by a Spirit Of Vengeance. Their purpose is to find sinners and impose penance. When a character becomes possessed by a Spirit Of Vengeance, they gain the Alternate Form tag, Which they can use voluntarily at any point. When the character takes on their Ghost Rider form, they gain access to the listed tags, traits and powers. When they return to human form, they lose the benefits of their Ghost Rider form. The character should select most Of the rest Of their powers from the Magic: Demonic and Elemental Control: Hellfire set.</description>
+		<examples>,Ghost Rider (Johnny Blaze),Ghost Rider (Danny Ketch),Ghost Rider (Robbie Reyes)</examples>
+		<tags>Alternate Form: Ghost Rider,Cursed,Supernatural</tags>
+		<traits>none</traits>
+		<powers>,Elemental Protection 2,Environmental Protection,Healing Factor,Hellfire Chains,Mighty 2,Penance Stare,Possess Vehicle,Sense Sins</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>Rank 4</preRequisites>
+		<limitation>Unless the character has another Origin</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Symbiote: Knull</name>
+		<description>The character has bonded With one Of the Klyntar, a race Of alien symbiotes created by the alien god Knull and which has long been under his influence—unlike the Venom symbiote and its offspring. When a character bonds with such a symbiote, they go up one rank and gain the listed powers, Which must be picked for the powers that the rank gives.</description>
+		<examples>none</examples>
+		<tags>none</tags>
+		<traits>Anathema: Lightning/Anti-Venom,Berserker</traits>
+		<powers>Disguise,Environmental Protection,Healing Factor,Mighty 1</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Symbiote: Venom</name>
+		<description>The character has bonded With a symbiote that is either the Venom symbiote or descended from it. When a character bonds With such a symbiote, they go up two ranks and gain the listed traits and powers, which must be picked for the powers that the ranks give.</description>
+		<examples>Carnage,Venom (Eddie Brock),Shriek</examples>
+		<tags>none</tags>
+		<traits>Anathema: Extreme Heat/Extreme Sonics/Anti-Venom,Berserker,Symbiotic Spider-Blinder</traits>
+		<powers>Disguise,Environmental Protection,Healing Factor,Mighty 1,Wallcrawling</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Unknown</name>
+		<description>The character has developed powers but is entirely unsure how. It could be that the player or the Narrator knows, but the character does not, or maybe nobody else does either. Astonishing things happen all the time in the Marvel Multiverse, and there's no way to classify them all. The source Of these powers may be explained in time. It could turn out that the character actually has a standard type Of Origin, or it could be that they have an Origin that'S utterly unique.</description>
+		<examples>Squirrel Girl.Taskmaster</examples>
+		<tags>Mysterious</tags>
+		<traits>none</traits>
+		<powers>none</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Weird Science</name>
+		<description>The characters powers arose from a scientific experiment or accident that 's hard—if not impossible—to reproduce Often. they had the latent genetic potential to develop powers and were somehow exposed to the right triggers—which would have likely killed most other people. These kinds of characters are sometimes called mutates. The difference between a mutate and a mutant is that a mutant's powers come to them naturally, but a mutate's powers require a triggering incident that might never happen. In this sense, Inhumans are all mutates who share a gene With a known trigger: the Terrigen Mist.</description>
+		<examples>Captain America (Steve Rogers),Daredevil (Matt Murdock),Invisible Woman,Jessica Jones,Luke Cage,Spider-Man (Miles Morales),Spider-Man (Peter Parker)</examples>
+		<tags>none</tags>
+		<traits>none</traits>
+		<powers>none</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Weird Science: Gamma Mutate</name>
+		<description>The character has a genetic mutation that gave them powers once they were exposed to enough gamma radiation, transforming them physically. This often gives them a monstrous appearance and changes their coloration drastically, usually to green, although some become red or even blue. They can often transform back into their Original as well.</description>
+		<examples>DOC Samson,Harpy (Betty Banner),Hulk (Bruce Banner),Red Hulk (Thaddeus "Thunderbolt" Ross)</examples>
+		<tags>Extreme Appearance (common in gamma mutate form),Green Door,Immunity: Gamma Radiation,Radioactive,</tags>
+		<traits>Weird,</traits>
+		<powers>none</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Alien: Brood</name>
+		<description>The character is a member Of the Brood, one of the most feared species in the galaxy. The Brood are insectoid creatures overseen by Brood Queens who all serve the Empress Brood. The Empress rules the entire Brood population through a hive mind that extends across the universe. Only Brood Queens (including the Empress) can implant a brood embryo in creatures from other species, which is how the Brood reproduce. Queens prefer to implant embryos in an unconscious host to prevent the host from knowing about it. They often poison the host with their tail stinger and wait for them to fall before implanting the embryo, which neutralizes the poison. If a character is fully taken over by a Brood embryo implanted in them, they automatically gain this Origin, along with the Extraordinary Origin trait.</description>
+		<examples>Brood,Brood Drone,Brood Queen,Empress Brood</examples>
+		<tags>Alien Heritage,Extreme Appearance,Villainous</tags>
+		<traits>Fearless,Hive Mind,Infector (Brood Implantation, queens only),Venomous</traits>
+		<powers>Additional Limbs,Flight 1 (except for Queens),Mighty 1,Sturdy 1,</powers>
+		<suggestedOccupation>Military</suggestedOccupation>
+		<preRequisites>Rank 2</preRequisites>
+		<limitation>Unless the Brood is a Queen, the character can only pick additional powers as if they had the Special Training Origin.</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Alien: Marginalian</name>
+		<description>The character is a Marginal, a species of hermaphrodites who come from Marginalia, a space between universes. They are legless, shaped like a green potato with arms, and they get around by means of levitation.</description>
+		<examples>Doop</examples>
+		<tags>Alien Heritage,Extreme Appearance</tags>
+		<traits>Weird</traits>
+		<powers>Dimensional Portal,Dimensional Travel,Dimensional Travel Other,Dimensional Travel Together,Grow 2,Healing Factor,Levitation,Shrink 2,Sturdy 2,Uncanny 2</powers>
+		<suggestedOccupation>Outsider</suggestedOccupation>
+		<preRequisites>Rank 3</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Alien: Technarch</name>
+		<description>The character is a member of the alien species known as the Technarchy. These artificially intelligent techno-organic beings use a Transmode Virus to infect other creatures and eventually take over a planet to prepare it to become part of the Phalanx or be devoured.</description>
+		<examples>>Warlock,>Magus</examples>
+		<tags>A.I.,>Alien Heritage,Extreme Appearance,Powerful</tags>
+		<traits>Enduring Constitution,Fresh Eyes,Infector (Virus)</traits>
+		<powers>Brain Drain,Disguise,Environmental Protection,Extended Reach 1,Flexible Bones 1,Leech Life,Shape-Shift</powers>
+		<suggestedOccupation>Outsider</suggestedOccupation>
+		<preRequisites>Rank 3</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+	<Origin>
+		<name>Monstrous: Mummudrai</name>
+		<description>The character is a monster known as a Mummudrai, an evil twin spirit from the Astral plane that each fetus must fight and defeat in the womb to be born. Few of them survive, but those who do can become terrifyingly powerful, as they can copy DNA and fashion physical forms for themselves.</description>
+		<examples>Cassandra Nova</examples>
+		<tags>none</tags>
+		<traits>Monster</traits>
+		<powers>DNA Manipulation</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Mutant</name>
+		<description>The character's powers spring from them being a member of the subspecies Homo superior. They have a latent X-Gene that grants them powers, often triggered at adolescence.</description>
+		<examples>Cyclops,Jean Grey,Namor,Professor X,Storm,Wolverine (Logan)</examples>		
+		<tags>Hounded,X-Gene</tags>
+		<traits>none</traits>
+		<powers>none</powers>		
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Mutant: Artificial</name>
+		<description>The character's powers spring from DNA manipulation—or a natural, inherent condition—that makes them appear to be a true mutant. They believe themselves to be a mutant, or they did for years. However, they were not born with an X-Gene.</description>
+		<examples>Deadpool,Mister Sinister,Quicksilver,Scarlet Witch</examples>
+		<tags>Hounded,Mutant Associate</tags>
+		<traits>none</traits>
+		<powers>none</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+
+	<Origin>
+		<name>Mutant: External</name>
+		<description>The character is a member of a rare subspecies of immortal mutants that stretches back thousands of years. Roughly a thousand years ago, the Externals formed a group called the High Lords that continues to influence the world's destiny from behind the scenes. Some of them believe Cannonball to be the latest of their kind, although this is unconfirmed.</description>
+		<examples>Apocalypse,Selene</examples>
+		<tags>Externally Immortal,Hounded,X-Gene</tags>
+		<traits>External Awareness</traits>
+		<powers>none</powers>
+		<suggestedOccupation>none</suggestedOccupation>
+		<preRequisites>none</preRequisites>
+		<limitation>none</limitation>
+	</Origin>
+</Origins>
+
