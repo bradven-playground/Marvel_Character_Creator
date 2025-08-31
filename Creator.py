@@ -3,6 +3,7 @@ from StatBlock import *
 from Display import *
 from data_loader import *
 from data_filter import *
+from file import *
 
 def load_powers():
     return load_powers_from_xml('Powers_1.3.xml')
@@ -52,6 +53,9 @@ def initialize_session_state(powers,origins,tags,traits,occupations):
 
     if "occupationList" not in st.session_state:
         st.session_state.occupationList = occupations    
+
+  
+        
 
 def input_character_info():
 
@@ -113,7 +117,7 @@ def add_powers(st):
         DisplayTabularInfo(st,selected_power)
 #                               
         if "requires" not in selected_power_name.lower():
-            pressed = st.button("Add Power")
+            pressed = st.button("Add Power",key = selected_power['name'] + " Add")
             if pressed:
                 if selected_power not in st.session_state.character["powers"]:
                     st.session_state.character["powers"].append(selected_power)     
@@ -148,6 +152,19 @@ def main():
         st.header("Character Sheet")
         st.button("Refresh", key='characterRefresh')
         # ... character info, stats, etc.
+       # with st.expander("Save / Load"):
+#
+            #cols = st.columns(2)
+            #with cols[0]:
+                #if st.button("Save"):
+                    #save_session_state(st)
+#
+            #with cols[1]:
+                #if st.button("Load"):
+                    #print("load attempt")
+                    #load_session_state(st)
+#
+            #checkForLoadFile(st)
 
         input_character_info()
 

@@ -6,7 +6,11 @@ def getUniquePowerSets(powers):
     for item in (power['power_set'] for power in powers):
         if ',' in item:
             # Split by comma and extend the result list
-            result.extend(item.split(','))
+            # in theory, for powers that appear in two power sets, just add the first as it throws off when counting 
+            #     the number of powerset a character has (as the one power will count as two)
+            
+            #result.extend(item.split(','))
+            result.append(item.split(',')[0])
         else:
             # Just add the non-comma string
             result.append(item)
@@ -103,17 +107,17 @@ def addRelated(st,selected_entry):
 def addRelatedField(st,selected_entry, entryKey, dictToAddFrom, dictToAddTo):
      
      if(entryKey in selected_entry):
-        print(entryKey)
+        
         if selected_entry[entryKey]:  
-            print (selected_entry[entryKey])
+        
             entriesToAdd = selected_entry[entryKey].split(",")
 
             for entryToAdd in entriesToAdd:
-                print (entryToAdd)
+        
                 entry = findInDict(entryToAdd.strip(), 'name',dictToAddFrom)
-                print (entry)
+        
                 if entry:
                     if entry not in dictToAddTo:
-                        print (entry)
+        
                         dictToAddTo.append(entry)
 

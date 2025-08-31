@@ -59,12 +59,12 @@ def DisplayPowerInfo(st,powers):
                 DisplayTabularInfo(st,power)
                 #if it's not a prerequisit for another power, give the user the option to remove
                 prereq = isPrerequisite(power,st.session_state.character["powers"])
-                #print(prereq)
+                
                 if not prereq:
-                    #print("isPrerequisite")
-                    pressed = st.button("Remove Power",key = power['name'])
+                
+                    pressed = st.button("Remove Power",key = power['name'] + " Remove")
                     if pressed:
-                        #print("pressed")
+                
                         if power in st.session_state.character["powers"]:
                             st.session_state.character["powers"].remove(power)  
                 else:
@@ -75,22 +75,39 @@ def display_powers(st):
     st.header(f"**Powers**")
     DisplayPowerInfo(st,st.session_state.character["powers"])
     
-    total_powers = len(st.session_state.character["powers"])
-    points_left = (st.session_state.character["rank"].value *5) - total_powers
+    #The sysem rewards heros that stick to a few power sets, such that you can get extra power
+    # the math is totalPower = 5 x Rank + (Rank - Total Power Set (and 'basic doesn't count))
 
-    if points_left < 0:
-        st.error(f"You have too many powers! Reduce by {-points_left}.")
+
+    powerSetsInUse = getUniquePowerSets(st.session_state.character["powers"])
+    
+    NumberOfCharacterPowerSet = len(powerSetsInUse)
+    
+    if "All" in powerSetsInUse:    
+        NumberOfCharacterPowerSet -= 1 #remove one for the 'all' category        
+        
+    if "Basic" in powerSetsInUse:    
+        NumberOfCharacterPowerSet -= 1 #remove one for the 'Basic' category
+            
+    Rank = int(st.session_state.character["rank"].value)
+
+    total_powers = len(st.session_state.character["powers"])
+
+    powers_left = ((Rank * 5) + (max(0,Rank - NumberOfCharacterPowerSet)) - total_powers)                   
+    
+    if powers_left < 0:
+        st.error(f"You have too many powers! Reduce by {-powers_left}.")
     else:
-        st.info(f"Powers left: {points_left}")
+        st.info(f"Powers left: {powers_left}")
 
 def display_stats(st):
-
     
     DisplayCharacterStats(st,
                           st.session_state.character["rank"].value,
                           st.session_state.character["abilityStats"],
                           st.session_state.character["characterStats"]
                           )
+    
 def display_movement(st):
     st.header(f"**Movement**")
     DisplayMovmentStats(st,
@@ -107,8 +124,7 @@ def add_origins(st):
         pressed = st.button("Add Origin",key = selected_origin['name'])
         if pressed:            
             st.session_state.character["origin"] = selected_origin
-            addRelated(st,selected_origin)
-           
+            addRelated(st,selected_origin)                       
 
 def display_origin(st):
      DisplayTabularInfo(st,st.session_state.character["origin"])
@@ -129,11 +145,34 @@ def display_traits(st):
     for traitItem in st.session_state.character["traits"]:
         with st.expander(traitItem["name"]):   
             DisplayTabularInfo(st,traitItem)
+
+            #if it's not a prerequisit for another power, give the user the option to remove
+            prereq = isPrerequisite(traitItem,st.session_state.character["powers"])
+            
+            if not prereq:
+            
+                pressed = st.button("Remove Trait",key = traitItem['name'] + " Remove")
+                if pressed:
+            
+                    if traitItem in st.session_state.character["traits"]:
+                        st.session_state.character["traits"].remove(traitItem)  
+            else:
+                st.write("Power is a pre-requisite for another power and cannot be removed")
+
+
                 
 def display_tags(st):
-     for tagItem in st.session_state.character["tags"]:
+
+    for tagItem in st.session_state.character["tags"]:
         with st.expander(tagItem["name"]):   
+
             DisplayTabularInfo(st,tagItem)
+
+            pressed = st.button("Remove Trait",key = tagItem['name'] + " Remove")
+            if pressed:
+                
+                if tagItem in st.session_state.character["tags"]:
+                    st.session_state.character["tags"].remove(tagItem)  
 
 def add_occupations(st):
 
@@ -141,7 +180,7 @@ def add_occupations(st):
 
     if selected_occupation:
         DisplayTabularInfo(st,selected_occupation)
-        pressed = st.button("Add Occupation",key = selected_occupation['name'])
+        pressed = st.button("Add Occupation",key = selected_occupation['name'] + " Add")
         if pressed:            
             st.session_state.character["occupation"] = selected_occupation
             addRelated(st,selected_occupation)
@@ -152,7 +191,7 @@ def add_traits(st):
 
     if selected_trait:
         DisplayTabularInfo(st,selected_trait)
-        pressed = st.button("Add Trait",key = selected_trait['name'])
+        pressed = st.button("Add Trait",key = selected_trait['name'] + " Add")
         if pressed:       
             st.session_state.character["traits"].append(selected_trait)
             addRelated(st,selected_trait)
@@ -163,7 +202,8 @@ def add_tags(st):
 
     if selected_tag:
         DisplayTabularInfo(st,selected_tag)
-        pressed = st.button("Add Tag",key = selected_tag['name'])
+        
+        pressed = st.button("Add Tag",key = selected_tag['name'] + " Add")
         if pressed:
             st.session_state.character["tags"].append(selected_tag)
             addRelated(st,selected_tag)
