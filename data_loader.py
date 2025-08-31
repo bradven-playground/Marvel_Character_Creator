@@ -48,4 +48,44 @@ def load_origins_from_xml(filepath):
         })
     return origins
 
+@st.cache_data
+def load_tags_from_xml(filepath):
+    tree = ET.parse(filepath)
+    root = tree.getroot()
+    tags = []
+    for tag_elem in root.findall("tag"):
+        tags.append({
+            "name": get_child_text(tag_elem, "name"),
+            "description": get_child_text(tag_elem, "description"),
+            "restriction": get_child_text(tag_elem, "restriction"),                
+        })        
+    return tags
 
+@st.cache_data
+def load_traits_from_xml(filepath):
+    tree = ET.parse(filepath)
+    root = tree.getroot()
+    traits = []
+    for traits_elem in root.findall("Trait"):        
+        traits.append({
+            "name": get_child_text(traits_elem, "Name"),
+            "description": get_child_text(traits_elem, "Description"),
+            "restriction": get_child_text(traits_elem, "Restrictions"),                
+            "statAdjusts": get_child_text(traits_elem, "statAdjust"),                
+        })
+    return traits
+
+
+@st.cache_data
+def load_occupations_from_xml(filepath):
+    tree = ET.parse(filepath)
+    root = tree.getroot()
+    Occupations = []
+    for Occupation_elem in root.findall("occupation"):
+        Occupations.append({
+            "name": get_child_text(Occupation_elem, "name"),
+            "description": get_child_text(Occupation_elem, "description"),
+            "tags": get_child_text(Occupation_elem, "tags"),                
+            "traits": get_child_text(Occupation_elem, "traits"),                
+        })
+    return Occupations

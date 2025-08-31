@@ -21,6 +21,9 @@ statBlock = ["Run Speed",
              "Web Swing Speed",
              "Combat Web Swing Speed",
              "Glide Speed",
+             "Combat Glide Speed",
+             "Combat Teleport Speed",
+             "Teleport Speed",
              "Initative Mod",
              "Health Dmg Reduction",
              "Focus Dmg Reduction",
@@ -110,9 +113,14 @@ def calculate_stats(rank, Stats, powers):
         "Web Swing Speed": 0,
         "Combat Web Swing Speed": 0,
         "Glide Speed": 0,
+        "Combat Glide Speed": 0,
+        "Combat Teleport Speed": 0,
+        "Teleport Speed": 0,
         #Ability Calcs
         "Health": max(Stats['Resilience'] * 30, 10),
         "Focus": max(Stats['Vigilance'] * 30, 10),
+        "Actions":1,
+        "Reactions":1,
         "Melee Defence Score": Stats['Melee'] + 10,
         "Melee Non-Combant Check": Stats['Melee'],        
         "Agility Defence Score": Stats['Agility'] +10,
@@ -161,11 +169,13 @@ def calculate_stats(rank, Stats, powers):
                     if ("replace" in modifyType):
                         if (adjustParam.isnumeric()):
                             CalcStats[statToAdjust] = max(CalcStats[statToAdjust],int(adjustParam))
+                        elif ("rank" in adjustParam.lower()):
+                            CalcStats[statToAdjust] = max(CalcStats[statToAdjust],rank)
                         else:
                             CalcStats[statToAdjust] = max(CalcStats[statToAdjust],CalcStats[adjustParam])
 
                     #Add the modifier to the base stat
-                    if ("add" in modifyType):
+                    if ("add" in modifyType):                        
                         CalcStats[statToAdjust] += int(adjustParam)
 
                     #calculate the modifier

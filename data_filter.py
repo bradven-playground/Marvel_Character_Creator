@@ -11,13 +11,15 @@ def getUniquePowerSets(powers):
             # Just add the non-comma string
             result.append(item)
 
+    result.append("All") #If the user wants to see all the powers
+
     return sorted(set(item.strip() for item in result))
 
 def findPowersInPowerSet(powerList,selected_powerSet):
     result = []
     for power in powerList:
        #see if it matchs the power set
-       if selected_powerSet in power['power_set']:
+       if selected_powerSet in power['power_set'] or selected_powerSet == "All":
             result.append(power)            
 
     #return sorted(set(item.strip() for item in result))
@@ -35,6 +37,11 @@ def findAvailablePowers(st,powerList,characterPowers, characterTags,Rank):
             result.append(power['name'] + " : " + reason)        
         
     return sorted(set(item.strip() for item in result))
+
+def findInDict(name, keyName, dictionary):
+    for entry in dictionary:
+        if entry[keyName] == name:
+            return entry
 
 def checkPrerequisites(power, characterPowers,characterTags,Rank):
     
@@ -61,6 +68,7 @@ def checkPrerequisites(power, characterPowers,characterTags,Rank):
                     eligible = False
 
             elif ("Tag" in prereqDetails[0]):
+
                 if not any(tags['name'] == prereqDetails[1] for tags in characterTags):
                     reason.append("(Requires Tag: " + prereqDetails[1] + " )")
                     eligible = False
