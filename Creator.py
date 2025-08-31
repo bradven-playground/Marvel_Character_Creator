@@ -82,7 +82,8 @@ def allocate_stats():
     st.session_state.character["characterStats"] = calcStatBlocks(st, 
                                                                   st.session_state.character["rank"].value,
                                                                   st.session_state.character["abilityStats"],
-                                                                  st.session_state.character["powers"]
+                                                                  st.session_state.character["powers"],
+                                                                  st.session_state.character["traits"]
                                                                   )
     
 
@@ -108,23 +109,14 @@ def add_powers(st):
          None
         )
        
-    if selected_power:
-        #st.info(selected_power)
+    if selected_power:        
         DisplayTabularInfo(st,selected_power)
-#        
-    #if "requires" not in selected_power_name.lower():
-        #if st.button("Add Power - click twice"):
-            #if selected_power not in st.session_state.character["powers"]:
-                #st.session_state.character["powers"].append(selected_power) 
-                        
+#                               
         if "requires" not in selected_power_name.lower():
             pressed = st.button("Add Power")
             if pressed:
                 if selected_power not in st.session_state.character["powers"]:
                     st.session_state.character["powers"].append(selected_power)     
-                else:
-                    print("remove button")                  
-
 
 def upload_avatar():
     # File uploader for avatar image and display preview
@@ -152,7 +144,7 @@ def main():
 
     characterTab, Origin_TraitTab,powerTab = st.tabs(["Character Sheet", "Origin/Occupation/Traits/Tags","Powers List"])
 
-    with characterTab:
+    with characterTab:        
         st.header("Character Sheet")
         st.button("Refresh", key='characterRefresh')
         # ... character info, stats, etc.
@@ -175,9 +167,9 @@ def main():
             with st.expander("Traits"):
                 display_traits(st)                                
             with st.expander("Tags"):
-                display_tags(st)                                
+                display_tags(st)                                        
 
-    with Origin_TraitTab:
+    with Origin_TraitTab:        
         st.header("Select an Origin Power")        
         # ... your entire power selection UI here ...
         with st.expander("Origins"):
@@ -187,13 +179,15 @@ def main():
         with st.expander("Traits"):
             add_traits(st)
         with st.expander("Tags"):
-            add_tags(st)
+            add_tags(st)        
 
     with powerTab:
+        
         st.header("Select a Power")
         st.button("Refresh", key='powerRefresh')
         # ... your entire power selection UI here ...
         add_powers(st)
+        
     
     
     
@@ -202,6 +196,6 @@ def main():
     display_character_summary()
     
     export_character()
-
+    
 if __name__ == "__main__":
     main()

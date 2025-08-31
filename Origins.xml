@@ -39,10 +39,10 @@
 	  <name>Alien: Skrull</name>
 	  <description>The character is a member of the Skrull, a reptilian humanoid race of shape-shifters who formed the interstellar Skrull Empire. In their natural form, they have green skin, red or green eyes, pointed ears and furrowed chins. They sprang from the planet Skrullos in the Andromeda Galaxy. The Original Skrulls could not shape-shift, but the Celestials experimented on them to form Eternal Skrulls and Deviant Skrulls, much like they did with humans on Earth. The Deviant Skrulls became the dominant form of the species, driving the Originals to extinction.</description>
 	  <examples>Hulkling (Half Skrull and Half Kree), Lyja, Super-Skrull (Kl'rt)</examples>
-	  <tags>Alien Heritage, Extreme Appearance (In Their Natural Form)</tags>
+	  <tags>Alien Heritage, Extreme Appearance</tags>
 	  <suggestedOccupation>Outsider</suggestedOccupation>
 	  <traits>None</traits>
-	  <powers>Disguise, Extended Reach, Flexible Bones, Shape-Shift, Slip Free</powers>
+	  <powers>Disguise, Extended Reach 1, Flexible Bones 1, Shape-Shift, Slip Free</powers>
 	  <preRequisites>None</preRequisites>
 	  <limitation>None</limitation>
 	</Origin>

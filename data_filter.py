@@ -85,9 +85,35 @@ def isPrerequisite(power,powerList):
 
         #check the pre-requisites
         for prereq in prereqs:
-            print("power: " + power['name'] + " prereq: " + prereq)
+            #print("power: " + power['name'] + " prereq: " + prereq)
             if power['name'] in prereq:
-                print ("is prereq")
+                #print ("is prereq")
                 isPrereq = True
             
     return isPrereq
+
+def addRelated(st,selected_entry):
+
+    addRelatedField(st,selected_entry, "tags", st.session_state.tagList,st.session_state.character["tags"])
+    addRelatedField(st,selected_entry, 'traits', st.session_state.traitList,st.session_state.character["traits"])
+    addRelatedField(st,selected_entry, 'occupation', st.session_state.occupationList,st.session_state.character["occupation"])
+    addRelatedField(st,selected_entry, 'powers', st.session_state.powerList,st.session_state.character["powers"])
+   
+
+def addRelatedField(st,selected_entry, entryKey, dictToAddFrom, dictToAddTo):
+     
+     if(entryKey in selected_entry):
+        print(entryKey)
+        if selected_entry[entryKey]:  
+            print (selected_entry[entryKey])
+            entriesToAdd = selected_entry[entryKey].split(",")
+
+            for entryToAdd in entriesToAdd:
+                print (entryToAdd)
+                entry = findInDict(entryToAdd.strip(), 'name',dictToAddFrom)
+                print (entry)
+                if entry:
+                    if entry not in dictToAddTo:
+                        print (entry)
+                        dictToAddTo.append(entry)
+

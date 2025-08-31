@@ -91,12 +91,12 @@ def AdjustStatBlock(st, Rank,Stats):
         Stats[stat] = st.session_state[f"stat_{stat}"]
     
 
-def calcStatBlocks(st, rank, Stats, powers):                       
-    CalcStats = calculate_stats(rank, Stats, powers)
+def calcStatBlocks(st, rank, Stats, powers,traits):                       
+    CalcStats = calculate_stats(rank, Stats, powers,traits)
     return CalcStats
    
 
-def calculate_stats(rank, Stats, powers):
+def calculate_stats(rank, Stats, powers,traits):
     # Calculates and returns a dict of derived stats
     CalcStats = {
         #Movement Calcs
@@ -146,64 +146,73 @@ def calculate_stats(rank, Stats, powers):
 
     if powers:
         for power in powers:  
+            adjustStats(power['statAdjusts'],rank, CalcStats)
 
-            #only run if there are stast to adjust
-            if not("none" in power['statAdjusts'].lower()):
-                
-                statAdjust = power['statAdjusts'].split(",")
-                
-                #Make each adjust            
-                for statChanges in statAdjust:            
+    if traits:
+        for trait in traits:  
+            adjustStats(trait['statAdjusts'],rank, CalcStats)
 
-                    #split type from calculation
-                    statAdjustDetails = statChanges.split(":")
-
-                    modifyType = statAdjustDetails[0].lower()                    
-                    statAdjustParams = statAdjustDetails[1].split(";")
-
-                    #split stat to modidy from the actual calculation
-                    statToAdjust = statAdjustParams[0].strip()
-                    adjustParam = statAdjustParams[1].strip()
-                    
-                    #replace the stat with the one listed - take the higher of two
-                    if ("replace" in modifyType):
-                        if (adjustParam.isnumeric()):
-                            CalcStats[statToAdjust] = max(CalcStats[statToAdjust],int(adjustParam))
-                        elif ("rank" in adjustParam.lower()):
-                            CalcStats[statToAdjust] = max(CalcStats[statToAdjust],rank)
-                        else:
-                            CalcStats[statToAdjust] = max(CalcStats[statToAdjust],CalcStats[adjustParam])
-
-                    #Add the modifier to the base stat
-                    if ("add" in modifyType):                        
-                        CalcStats[statToAdjust] += int(adjustParam)
-
-                    #calculate the modifier
-                    if ("calc" in modifyType):   
-                                
-                        #THis assumes all 'calc' are multipliers
-                        statAdjustCalcs = adjustParam.split("x")
-                        multipliers=[]                        
-
-                        #This lets there be multiple multipliers (Y x N x D) etc
-                        #supports:
-                        #  a raw number (2,3,4)
-                        #  'rank' - uses the characters current rank
-                        #   or assumes the string is an existing stat to be used
-                        
-                        for statAdjustCalc in statAdjustCalcs:     
-                            if (statAdjustCalc.strip().isnumeric()):
-                                multipliers.append(int(statAdjustCalc.strip()))
-                            elif ("rank" in statAdjustCalc.strip().lower()):
-                                multipliers.append(rank)
-                            else:
-                                multipliers.append(CalcStats[statAdjustCalc.strip()])
-
-                        total = 1
-                        #multiply them together!
-                        for multiplier in multipliers:
-                            total *= multiplier
-                                                
-                        CalcStats[statToAdjust] = total
-            
     return CalcStats
+
+def adjustStats(adjustEntry,rank, CalcStats):
+        
+    #only run if there are stast to adjust
+    if not("none" in adjustEntry.lower()):
+        
+        statAdjust = adjustEntry.split(",")
+        
+        #Make each adjust            
+        for statChanges in statAdjust:            
+
+            #split type from calculation
+            statAdjustDetails = statChanges.split(":")
+
+            modifyType = statAdjustDetails[0].lower()                    
+            statAdjustParams = statAdjustDetails[1].split(";")
+
+            #split stat to modidy from the actual calculation
+            statToAdjust = statAdjustParams[0].strip()
+            adjustParam = statAdjustParams[1].strip()
+            
+            #replace the stat with the one listed - take the higher of two
+            if ("replace" in modifyType):
+                if (adjustParam.isnumeric()):
+                    CalcStats[statToAdjust] = max(CalcStats[statToAdjust],int(adjustParam))
+                elif ("rank" in adjustParam.lower()):
+                    CalcStats[statToAdjust] = max(CalcStats[statToAdjust],rank)
+                else:
+                    CalcStats[statToAdjust] = max(CalcStats[statToAdjust],CalcStats[adjustParam])
+
+            #Add the modifier to the base stat
+            if ("add" in modifyType):                        
+                CalcStats[statToAdjust] += int(adjustParam)
+
+            #calculate the modifier
+            if ("calc" in modifyType):   
+                        
+                #THis assumes all 'calc' are multipliers
+                statAdjustCalcs = adjustParam.split("x")
+                multipliers=[]                        
+
+                #This lets there be multiple multipliers (Y x N x D) etc
+                #supports:
+                #  a raw number (2,3,4)
+                #  'rank' - uses the characters current rank
+                #   or assumes the string is an existing stat to be used
+                
+                for statAdjustCalc in statAdjustCalcs:     
+                    if (statAdjustCalc.strip().isnumeric()):
+                        multipliers.append(int(statAdjustCalc.strip()))
+                    elif ("rank" in statAdjustCalc.strip().lower()):
+                        multipliers.append(rank)
+                    else:
+                        multipliers.append(CalcStats[statAdjustCalc.strip()])
+
+                total = 1
+                #multiply them together!
+                for multiplier in multipliers:
+                    total *= multiplier
+                                        
+                CalcStats[statToAdjust] = total
+            
+    

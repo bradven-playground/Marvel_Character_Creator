@@ -59,12 +59,12 @@ def DisplayPowerInfo(st,powers):
                 DisplayTabularInfo(st,power)
                 #if it's not a prerequisit for another power, give the user the option to remove
                 prereq = isPrerequisite(power,st.session_state.character["powers"])
-                print(prereq)
+                #print(prereq)
                 if not prereq:
-                    print("isPrerequisite")
+                    #print("isPrerequisite")
                     pressed = st.button("Remove Power",key = power['name'])
                     if pressed:
-                        print("pressed")
+                        #print("pressed")
                         if power in st.session_state.character["powers"]:
                             st.session_state.character["powers"].remove(power)  
                 else:
@@ -101,83 +101,72 @@ def display_movement(st):
     
 def add_origins(st):
     
-    origin_names = [origin["name"] for origin in st.session_state.originList]
-    #st.info(origin_names)
-    selected_origin_name = st.selectbox("Choose Origin", options=sorted(name.strip() for name in origin_names))   
-    selected_origin = next(
-        (origin for origin in st.session_state.originList if origin["name"].strip() == selected_origin_name),
-         None
-        )
+    selected_origin = getDictEntryFromSelect(st,"Choose Origin", 'name',st.session_state.originList)
     if selected_origin:
         DisplayTabularInfo(st,selected_origin)
         pressed = st.button("Add Origin",key = selected_origin['name'])
         if pressed:            
             st.session_state.character["origin"] = selected_origin
-            
-            tagsToAdd = selected_origin['tags'].split(",")
-            for tagToAdd in tagsToAdd:
-                st.session_state.character["tags"] = findInDict(tagToAdd, 'name',)
-            #broken here, need to iterate on each of the tags/traits/powers in the origin, find the tag in the appropriate list,  and add to the character
-
-            #if not "none" in selected_origin["tags"]:
-                
-                #add_tags(aselected_origin["tags"].append(findInDict() st.session_state.character["tags"] = selected_origin["tags"]
-                #findInDict
-
-            #if not "none" in selected_origin["traits"]:
-                #st.session_state.character["traits"] = selected_origin["traits"]
-
-            #if not "none" in selected_origin["powers"]:
-                #st.session_state.character["trapowersits"] = selected_origin["powers"]
+            addRelated(st,selected_origin)
+           
 
 def display_origin(st):
      DisplayTabularInfo(st,st.session_state.character["origin"])
 
-def display_occupation(st):
+def display_occupation(st):    
     DisplayTabularInfo(st,st.session_state.character["occupation"])
                 
 def display_traits(st):
-    DisplayTabularInfo(st,st.session_state.character["traits"])
+
+    total_traits = len(st.session_state.character["traits"])
+    traits_left = (st.session_state.character["rank"].value *4) - total_traits
+
+    if traits_left < 0:
+        st.error(f"You have too many traits! Reduce by {-traits_left}.")
+    else:
+        st.info(f"Powers traits: {traits_left}")
+
+    for traitItem in st.session_state.character["traits"]:
+        with st.expander(traitItem["name"]):   
+            DisplayTabularInfo(st,traitItem)
                 
 def display_tags(st):
-    DisplayTabularInfo(st,st.session_state.character["tags"])
+     for tagItem in st.session_state.character["tags"]:
+        with st.expander(tagItem["name"]):   
+            DisplayTabularInfo(st,tagItem)
 
 def add_occupations(st):
-    occupation_names = [occupation["name"] for occupation in st.session_state.occupationList]
-    #st.info(origin_names)
-    selected_occupation_name = st.selectbox("Choose Occupation", options=sorted(name.strip() for name in occupation_names))   
-    selected_occupation = next(
-        (occupation for occupation in st.session_state.occupationList if occupation["name"].strip() == selected_occupation_name),
-         None
-        )
-    if selected_occupation_name:
+
+    selected_occupation = getDictEntryFromSelect(st,"Choose Occupation", 'name',st.session_state.occupationList)
+
+    if selected_occupation:
         DisplayTabularInfo(st,selected_occupation)
-        #pressed = st.button("Add Origin",key = selected_origin['name'])
-        #if pressed:            
-            #st.session_state.character["origin"] = selected_origin
-    pass
+        pressed = st.button("Add Occupation",key = selected_occupation['name'])
+        if pressed:            
+            st.session_state.character["occupation"] = selected_occupation
+            addRelated(st,selected_occupation)
         
 def add_traits(st):
-    #trait_names = [trait["name"] for trait in st.session_state.traitList]
-    ##st.info(origin_names)
-    #selected_trait_name = st.selectbox("Choose Trait", options=sorted(name.strip() for name in trait_names))   
-    #selected_trait = next(
-        #(trait for trait in st.session_state.traitList if trait["name"].strip() == selected_trait_name),
-#         None
-        #)
+
     selected_trait = getDictEntryFromSelect(st,"Choose Trait", 'name',st.session_state.traitList)
-    print (selected_trait)
+
     if selected_trait:
         DisplayTabularInfo(st,selected_trait)
-        #pressed = st.button("Add Origin",key = selected_origin['name'])
-        #if pressed:            
-            #st.session_state.character["origin"] = selected_origin    
+        pressed = st.button("Add Trait",key = selected_trait['name'])
+        if pressed:       
+            st.session_state.character["traits"].append(selected_trait)
+            addRelated(st,selected_trait)
+
 
 def add_tags(st):
-    selected_trait = getDictEntryFromSelect(st,"Choose Tag", 'name',st.session_state.tagList)
-    print (selected_trait)
-    if selected_trait:
-        DisplayTabularInfo(st,selected_trait)
+    selected_tag = getDictEntryFromSelect(st,"Choose Tag", 'name',st.session_state.tagList)
+
+    if selected_tag:
+        DisplayTabularInfo(st,selected_tag)
+        pressed = st.button("Add Tag",key = selected_tag['name'])
+        if pressed:
+            st.session_state.character["tags"].append(selected_tag)
+            addRelated(st,selected_tag)
 
 def getDictEntryFromSelect(st, selectBoxText, keyName, dictList):
 
@@ -191,4 +180,5 @@ def getDictEntryFromSelect(st, selectBoxText, keyName, dictList):
                             )
     if selected_dictEntry:
         return selected_dictEntry
+
 
