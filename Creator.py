@@ -3,6 +3,7 @@ from StatBlock import *
 from Display import *
 from data_loader import *
 from data_filter import *
+from file import *
 
 def load_powers():
     return load_powers_from_xml('Powers_1.3.xml')
@@ -10,7 +11,16 @@ def load_powers():
 def load_origins():
     return load_origins_from_xml('Origins.xml')
 
-def initialize_session_state(powers,origins):
+def load_tags():
+    return load_tags_from_xml('Tags_1.0.0.xml')
+
+def load_traits():
+    return load_traits_from_xml('Traits_1.0.0.xml')
+
+def load_occupations():
+    return load_occupations_from_xml('Occupations_1.0.0.xml')
+
+def initialize_session_state(powers,origins,tags,traits,occupations):
     # Initialize character data in session state if not already present
     if "character" not in st.session_state:
         st.session_state.character = {
@@ -23,6 +33,7 @@ def initialize_session_state(powers,origins):
             "traits": [],
             "tags": [],
             "occupation": [],
+            "origin": [],
             "avatar": None,
             "selected_rank":None,
             "add_power":False,
@@ -33,6 +44,18 @@ def initialize_session_state(powers,origins):
 
     if "originList" not in st.session_state:
         st.session_state.originList = origins
+
+    if "tagList" not in st.session_state:
+        st.session_state.tagList = tags
+
+    if "traitList" not in st.session_state:
+        st.session_state.traitList = traits
+
+    if "occupationList" not in st.session_state:
+        st.session_state.occupationList = occupations    
+
+  
+        
 
 def input_character_info():
 
@@ -51,6 +74,9 @@ def input_character_info():
     
 def allocate_stats():
 
+    st.header(f"**Abilities**")
+
+
     AdjustStatBlock(st, 
                     st.session_state.character["rank"].value,
                     st.session_state.character["abilityStats"]
@@ -60,7 +86,8 @@ def allocate_stats():
     st.session_state.character["characterStats"] = calcStatBlocks(st, 
                                                                   st.session_state.character["rank"].value,
                                                                   st.session_state.character["abilityStats"],
-                                                                  st.session_state.character["powers"]
+                                                                  st.session_state.character["powers"],
+                                                                  st.session_state.character["traits"]
                                                                   )
     
 
@@ -86,37 +113,14 @@ def add_powers(st):
          None
         )
        
-    if selected_power:
-        #st.info(selected_power)
+    if selected_power:        
         DisplayTabularInfo(st,selected_power)
-#        
-    #if "requires" not in selected_power_name.lower():
-        #if st.button("Add Power - click twice"):
-            #if selected_power not in st.session_state.character["powers"]:
-                #st.session_state.character["powers"].append(selected_power) 
-                        
+#                               
         if "requires" not in selected_power_name.lower():
-            pressed = st.button("Add Power")
+            pressed = st.button("Add Power",key = selected_power['name'] + " Add")
             if pressed:
                 if selected_power not in st.session_state.character["powers"]:
                     st.session_state.character["powers"].append(selected_power)     
-                else:
-                    print("remove button")
-                    
-
-def add_origins(st):
-    
-    origin_names = [origin["name"] for origin in st.session_state.originList]
-    #st.info(origin_names)
-    selected_origin_name = st.selectbox("Choose Origin", options=sorted(name.strip() for name in origin_names))   
-    selected_origin = next(
-        (origin for origin in st.session_state.originList if origin["name"].strip() == selected_origin_name),
-         None
-        )
-    if selected_origin:
-        DisplayTabularInfo(st,selected_origin)
-    
-
 
 def upload_avatar():
     # File uploader for avatar image and display preview
@@ -134,35 +138,73 @@ def export_character():
 def main():
     powers = load_powers()
     origins = load_origins()
+    tags = load_tags()
+    traits = load_traits()
+    occupations = load_occupations()
 
-    initialize_session_state(powers,origins)
+    initialize_session_state(powers,origins,tags,traits,occupations)
     
     st.title("Marvel Multiverse TTRPG Character Creator")
 
-    characterTab, Origin_TraitTab,powerTab = st.tabs(["Character Sheet", "Origin/Traits","Powers List"])
+    characterTab, Origin_TraitTab,powerTab = st.tabs(["Character Sheet", "Origin/Occupation/Traits/Tags","Powers List"])
 
-    with characterTab:
+    with characterTab:        
         st.header("Character Sheet")
         st.button("Refresh", key='characterRefresh')
         # ... character info, stats, etc.
+       # with st.expander("Save / Load"):
+#
+            #cols = st.columns(2)
+            #with cols[0]:
+                #if st.button("Save"):
+                    #save_session_state(st)
+#
+            #with cols[1]:
+                #if st.button("Load"):
+                    #print("load attempt")
+                    #load_session_state(st)
+#
+            #checkForLoadFile(st)
 
         input_character_info()
 
         if st.session_state.character["rank"]:
-            allocate_stats()
-            display_powers(st)
-            display_stats(st)
+            with st.expander("Abilities"):
+                allocate_stats()
+            with st.expander("Stats"):
+                display_stats(st)
+            with st.expander("Movement"):
+                display_movement(st)    
+            with st.expander("Powers"):
+                display_powers(st)                        
+            with st.expander("Origin"):
+                display_origin(st)
+            with st.expander("Occupation"):
+                display_occupation(st)
+            with st.expander("Traits"):
+                display_traits(st)                                
+            with st.expander("Tags"):
+                display_tags(st)                                        
 
-    with Origin_TraitTab:
+    with Origin_TraitTab:        
         st.header("Select an Origin Power")        
         # ... your entire power selection UI here ...
-        add_origins(st)
+        with st.expander("Origins"):
+            add_origins(st)
+        with st.expander("Occupations"):
+            add_occupations(st)        
+        with st.expander("Traits"):
+            add_traits(st)
+        with st.expander("Tags"):
+            add_tags(st)        
 
     with powerTab:
+        
         st.header("Select a Power")
         st.button("Refresh", key='powerRefresh')
         # ... your entire power selection UI here ...
         add_powers(st)
+        
     
     
     
@@ -171,6 +213,6 @@ def main():
     display_character_summary()
     
     export_character()
-
+    
 if __name__ == "__main__":
     main()

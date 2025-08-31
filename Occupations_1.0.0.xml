@@ -1,0 +1,128 @@
+<occupations>
+  <occupation>
+    <name>Adventurer</name>
+    <description>The character focuses on having adventures. Perhaps they're independently wealthy and don't need another occupation, or maybe they hire out their services.</description>
+    <tags>Black Market Access</tags>
+    <traits>Fearless, Connections: Super Heroes or Villains</traits>
+    <examples>Iron Fist (Danny Rand), Luke Cage, Hawkeye (Kate Bishop)</examples>
+  </occupation>
+  <occupation>
+    <name>Assassin</name>
+    <description>The character is a hired killer. They might tell themselves that this is for the greater good. They might be picky about who they take on as clients or targets, but the core of their occupation is ending lives.</description>
+    <tags>Streetwise, Villainous (common)</tags>
+    <traits>Connections: Criminal, Signature Attack</traits>
+    <examples>Arcade, Bullseye, Elektra, the Punisher</examples>
+  </occupation>
+  <occupation>
+    <name>Criminal</name>
+    <description>The character did something that put them on the wrong side of the law. They might have spent time in jail for their crimes, or they might have gotten away with them scot-free. The fact that they break the law doesn't necessarily make them a bad person, but law enforcers usually don't care about such distinctions. If they are currently wanted by the law for their crimes, they should also take the Hunted tag. If they have served time, they should take the Convict tag too.</description>
+    <tags>Black Market Access, Streetwise</tags>
+    <traits>Connections: Criminal</traits>
+    <examples>Ant-Man (Scott Lang), Black Cat, Gambit</examples>
+  </occupation>
+  <occupation>
+    <name>Educator</name>
+    <description>The character educates others. They might be a grade-school teacher, a college professor, or some other kind of instructor. They do their best to bring the knowledge they have to other people.</description>
+    <tags>none</tags>
+    <traits>Connections: Community, Font of Information, Presence</traits>
+    <examples>Agatha Harkness, Blue Marvel, Professor X</examples>
+  </occupation>
+  <occupation>
+    <name>Engineer</name>
+    <description>The character designs and builds things to solve problems. They sometimes invent brand-new things, but mostly they take scientific research and apply it to real-world problems.</description>
+    <tags>Lab Access</tags>
+    <traits>Gearhead, none</traits>
+    <examples>Ghost Rider (Robbie Reyes), Iron Man (Tony Stark), Whiplash</examples>
+  </occupation>
+  <occupation>
+    <name>Entertainer</name>
+    <description>The character entertains others for a living. They could be a singer, dancer, actor, musician, writer, filmmaker, speaker, or something similar. They work hard to both gain an audience and keep them engaged.</description>
+    <tags>none</tags>
+    <traits>Famous, Presence, Public Speaking</traits>
+    <examples>Dazzler, Echo, Mysterio, Wonder Man</examples>
+  </occupation>
+  <occupation>
+    <name>Health Care Worker</name>
+    <description>The character is a doctor, nurse, therapist, or other person dedicated to helping heal others. They likely have access to an office where they practice their craft.</description>
+    <tags>none</tags>
+    <traits>Clinician, First Aid</traits>
+    <examples>Doc Samson, Doctor Strange, Night Nurse (Linda Carter), Thor (Jane Foster)</examples>
+  </occupation>
+  <occupation>
+    <name>Investigator</name>
+    <description>The character is trained to solve mysteries, as a private detective or as part of an official law enforcement organization, ranging from the New York PD to the FBI, S.H.I.E.L.D. or even the Nova Corps.</description>
+    <tags>none</tags>
+    <traits>Connections: Police, Interrogation, Investigation</traits>
+    <examples>Jessica Jones, Misty Knight</examples>
+  </occupation>
+  <occupation>
+    <name>Journalist</name>
+    <description>The character works as a reporter or editor for a news organization. This can range anywhere from the Daily Bugle to TNM (Threats and Menaces). It can also include any sort of reporting, whether TV, radio, newspaper, or online.</description>
+    <tags>none</tags>
+    <traits>Audience, Connections: Sources, Pundit</traits>
+    <examples>Silk, Spider-Man (Peter Parker), Venom (Eddie Brock)</examples>
+  </occupation>
+  <occupation>
+    <name>Law Enforcer</name>
+    <description>The character works as a law enforcement officer. They could be anything from a town cop to an agent of S.H.I.E.L.D. They have a great deal of authority inside their jurisdiction and often command respect outside of it as well.</description>
+    <tags>Authority, Backup</tags>
+    <traits>Interrogation, Investigation</traits>
+    <examples>Nick Fury Jr., Human Torch (Jim Hammond), Maria Hill, Photon (Monica Rambeau)</examples>
+  </occupation>
+  <occupation>
+    <name>Lawyer</name>
+    <description>The character has a law degree and knows how to use it. They might work for a gigantic and powerful law firm, or they might have set up their own practice.</description>
+    <tags>none</tags>
+    <traits>Dealmaker, Legal Eagle, Public Speaking</traits>
+    <examples>Daredevil (Matt Murdock), Foggy Nelson, She-Hulk</examples>
+  </occupation>
+  <occupation>
+    <name>Leader</name>
+    <description>The character is the leader of a city, region, state, or nation. This includes things like being the elected mayor of New York City or the hereditary king of a country.</description>
+    <tags>Authority, Powerful</tags>
+    <traits>Presence</traits>
+    <examples>Black Bolt, Black Panther (T'Challa), Doctor Doom, Sub-Mariner (Namor), Thor (Odinson)</examples>
+  </occupation>
+  <occupation>
+    <name>Military</name>
+    <description>The character serves (or at least once served) in a military organization and relies on that training. They can sometimes call on their fellow soldiers for help. If they are on active duty, their time is often not their own, and they should take the tag Obligation: Duty.</description>
+    <tags>none</tags>
+    <traits>Battle Ready, Connections: Military, Situational Awareness</traits>
+    <examples>Captain America (Steve Rogers), Captain Marvel (Carol Danvers), War Machine, Wolverine (Logan)</examples>
+  </occupation>
+  <occupation>
+    <name>Outsider</name>
+    <description>The character comes from another planet, dimension or time and is not familiar with how things work on this Earth. They may have had another occupation back where they came from, but it's not generally applicable here.</description>
+    <tags>none</tags>
+    <traits>Connections: Outsiders, Fresh Eyes, Stranger</traits>
+    <examples>Groot, Rocket Raccoon, Thor (Odinson)</examples>
+  </occupation>
+  <occupation>
+    <name>Scientist</name>
+    <description>The character solves problems by means of scientific research. They are often among the smartest people in the world, and other heroes turn to them for their expertise.</description>
+    <tags>Lab Access</tags>
+    <traits>Inventor, Scientific Expertise</traits>
+    <examples>Doctor Octopus (Otto Octavius), Hulk (Bruce Banner), Mister Fantastic, Moon Girl</examples>
+  </occupation>
+  <occupation>
+    <name>Spy</name>
+    <description>The character is an expert in espionage. They served as a spy for a nation or corporation and know how to find things out about people and organizations.</description>
+    <tags>Black Market Access</tags>
+    <traits>Connections: Espionage, Leverage</traits>
+    <examples>Black Widow (Natasha Romanoff), Peggy Carter, Winter Soldier</examples>
+  </occupation>
+  <occupation>
+    <name>Student</name>
+    <description>The character attends school or college on a full-time basis. If they graduate, they can select a new occupation to replace this one.</description>
+    <tags>Mentor, Obligation: School</tags>
+    <traits>Quick Learner</traits>
+    <examples>Moon Girl, Ms. Marvel (Kamala Khan), Spider-Man (Miles Morales)</examples>
+  </occupation>
+  <occupation>
+    <name>Tycoon</name>
+    <description>The character is wildly wealthy and well-known. They want for nothing and make a splash wherever they go, getting invited to the best parties and all VIP sections.</description>
+    <tags>Rich</tags>
+    <traits>Connections: Celebrities, Famous</traits>
+    <examples>Iron Man (Tony Stark), Iron Monger (Obadiah Stane), Mandarin, Sunspot, Wasp (Janet Van Dyne)</examples>
+  </occupation>
+</occupations>
