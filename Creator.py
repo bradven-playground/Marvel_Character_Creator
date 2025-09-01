@@ -162,7 +162,7 @@ def main():
                
         with st.expander("Save / Load"):
 
-            cols = st.columns(2)
+            cols = st.columns(3)
             with cols[0]:
                 if st.button("Save"):
                     save_session_state(st)
@@ -171,6 +171,9 @@ def main():
                 if st.button("Load"):                    
                     load_session_state(st)
         
+            with cols[2]:
+                if st.button("Clear"):                    
+                    clear_session_state(st)
         
 
         if st.session_state.character["rank"]:
