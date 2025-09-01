@@ -8,10 +8,13 @@ def DisplayCharacterStats(st, rank, Ability,CalcStats):
         st.markdown(f"#### Health: {CalcStats['Health']}")
         st.markdown(f"#### Focus: {CalcStats['Focus']}")
         st.markdown(f"#### Initative: {CalcStats['Initative Mod']}")
+        st.markdown(f"#### Actions: {CalcStats['Actions']}")
 
     with cols[1]:
         st.markdown(f"##### Health Dmg Reduction: {CalcStats['Health Dmg Reduction']}")
         st.markdown(f"##### Focus Dmg Reduction: {CalcStats['Focus Dmg Reduction']}")
+        st.markdown(f"##### ")
+        st.markdown(f"#### Reactions: {CalcStats['Reactions']}")
 
     st.markdown("--------------------")
 
@@ -100,6 +103,15 @@ def display_powers(st):
     else:
         st.info(f"Powers left: {powers_left}")
 
+def display_abilities(st):
+     
+    cols = st.columns(2) # split into 2 columns for readability
+    
+    for idx, (stat,value) in enumerate(st.session_state.character["abilityStats"].items()):
+        with cols[idx % 2]:            
+            st.markdown(f"{stat}: {value}")
+                
+
 def display_stats(st):
     
     DisplayCharacterStats(st,
@@ -135,7 +147,7 @@ def display_occupation(st):
 def display_traits(st):
 
     total_traits = len(st.session_state.character["traits"])
-    traits_left = (st.session_state.character["rank"].value *4) - total_traits
+    traits_left = (st.session_state.character["rank"].value) - total_traits
 
     if traits_left < 0:
         st.error(f"You have too many traits! Reduce by {-traits_left}.")
@@ -222,3 +234,26 @@ def getDictEntryFromSelect(st, selectBoxText, keyName, dictList):
         return selected_dictEntry
 
 
+def displayInfo(st):
+    st.title("Information")
+
+    st.header("Character Sheet Tab")
+    st.markdown("The Character Sheet tab displays the information for your Hero based on what you've " \
+    "selected on the other tabs.  You can remove powers,traits, and tags from here.  If you'd like" \
+    "to update anything else, please use the appropriate tab.\n\n" \
+    "You may need to click the 'Refresh' button at the top of the page if you don't see anything added/adjust from the other tabs")
+
+    st.header("Attributes Tab")
+    st.markdown("The attributes tab lets you adjust the hero's name,rank,and stats/attributes\n\n" \
+    "Note: Changing Rank doesn't allways stick, you may have to select it a second time")
+
+    st.header("Origin/Occupation/Traits/Tags Tab")
+    st.markdown("The Origin/Occupation/Traits/Tags tab lets you select the heros Origin, Occupation, Traits, and Tags" \
+    ". They will be displayed on the Character Sheet.")
+
+    st.header("Powers List Tab")
+    st.markdown("The Powers List is where you can select power to add to your hero. Select the power set you want to choose from," \
+    " then the power you'd like to add.  Any power missing the pre-requsist should show what you're missing and won't be addable unless" \
+    " those prerequisits are met.\n\nYou will likely need to click the 'Refresh' button to see change to the pre-requisites" \
+    "after adding a new power")
+    
