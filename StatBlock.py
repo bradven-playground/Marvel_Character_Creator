@@ -33,6 +33,8 @@ statBlock = ["Run Speed",
              "Logic Dmg Multiplier",
              "Health",
              "Focus",
+             "Actions",
+             "Reactions",
              "Melee Defence Score",
              "Melee Non-Combant Check",
              "Agility Defence Score",
@@ -65,6 +67,7 @@ def AdjustStatBlock(st, Rank,Stats):
         key = f"stat_{stat}"        
         if key not in st.session_state:
             st.session_state[key] = 0    
+            
     # --- The stat block ---
     cols = st.columns(len(Stats)//2) # split into 2 columns for readability
     for idx, stat in enumerate(Stats):
@@ -134,7 +137,7 @@ def calculate_stats(rank, Stats, powers,traits):
         "Logic Defence Score": Stats['Logic'] +10,
         "Logic Non-Combant Check": Stats['Logic'],     
         #Modifier Calcs
-        "Initative Mod": 0,
+        "Initative Mod": Stats['Vigilance'],
         "Health Dmg Reduction": 0,
         "Focus Dmg Reduction": 0,        
         "Melee Dmg Multiplier": 0,

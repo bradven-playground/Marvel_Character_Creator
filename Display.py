@@ -8,10 +8,13 @@ def DisplayCharacterStats(st, rank, Ability,CalcStats):
         st.markdown(f"#### Health: {CalcStats['Health']}")
         st.markdown(f"#### Focus: {CalcStats['Focus']}")
         st.markdown(f"#### Initative: {CalcStats['Initative Mod']}")
+        st.markdown(f"#### Actions: {CalcStats['Actions']}")
 
     with cols[1]:
         st.markdown(f"##### Health Dmg Reduction: {CalcStats['Health Dmg Reduction']}")
         st.markdown(f"##### Focus Dmg Reduction: {CalcStats['Focus Dmg Reduction']}")
+        st.markdown(f"##### ")
+        st.markdown(f"#### Reactions: {CalcStats['Reactions']}")
 
     st.markdown("--------------------")
 
@@ -135,7 +138,7 @@ def display_occupation(st):
 def display_traits(st):
 
     total_traits = len(st.session_state.character["traits"])
-    traits_left = (st.session_state.character["rank"].value *4) - total_traits
+    traits_left = (st.session_state.character["rank"].value) - total_traits
 
     if traits_left < 0:
         st.error(f"You have too many traits! Reduce by {-traits_left}.")

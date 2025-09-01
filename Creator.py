@@ -142,6 +142,8 @@ def main():
     traits = load_traits()
     occupations = load_occupations()
 
+    checkForLoadFile(st)
+
     initialize_session_state(powers,origins,tags,traits,occupations)
     
     st.title("Marvel Multiverse TTRPG Character Creator")
@@ -151,21 +153,19 @@ def main():
     with characterTab:        
         st.header("Character Sheet")
         st.button("Refresh", key='characterRefresh')
-        # ... character info, stats, etc.
-       # with st.expander("Save / Load"):
-#
-            #cols = st.columns(2)
-            #with cols[0]:
-                #if st.button("Save"):
-                    #save_session_state(st)
-#
-            #with cols[1]:
-                #if st.button("Load"):
-                    #print("load attempt")
-                    #load_session_state(st)
-#
-            #checkForLoadFile(st)
+               
+        with st.expander("Save / Load"):
 
+            cols = st.columns(2)
+            with cols[0]:
+                if st.button("Save"):
+                    save_session_state(st)
+
+            with cols[1]:
+                if st.button("Load"):
+                    print("load attempt")
+                    load_session_state(st)
+        
         input_character_info()
 
         if st.session_state.character["rank"]:
