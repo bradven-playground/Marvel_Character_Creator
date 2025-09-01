@@ -64,34 +64,37 @@ def AdjustStatBlock(st, Rank,Stats):
 
     # --- Initialize session_state values ONLY if not already set ---
     for stat in Stats:
-        key = f"stat_{stat}"        
-        if key not in st.session_state:
-            st.session_state[key] = 0    
+        if stat not in st.session_state.character["abilityStats"]:
+            st.session_state.character["abilityStats"][stat] = 0   
             
     # --- The stat block ---
-    cols = st.columns(len(Stats)//2) # split into 2 columns for readability
+    cols = st.columns(len(Stats) // 2)  # split into 2 columns for readability
+
     for idx, stat in enumerate(Stats):
-        with cols[idx % (len(Stats)//2)]:
-            key = f"stat_{stat}"            
-            st.number_input(
-                label=stat, 
-                min_value=0, 
-                max_value=MaxValue, 
-                #value=st.session_state[key],  # Use the pre-set value
-                key=key
+        with cols[idx % (len(Stats) // 2)]:
+            # Get the current value from the dictionary, default to 0 if missing
+            current_value = min(st.session_state.character["abilityStats"].get(stat, 0),MaxValue)
+            
+            # Display number input and capture new value
+            new_value = st.number_input(
+                label=stat,
+                min_value=0,
+                max_value=MaxValue,
+                value=current_value,
+                key=f"input_{stat}",  # use unique keys for Streamlit widgets
             )
 
+        # Update the dictionary with the new value
+        st.session_state.character["abilityStats"][stat] = new_value
+
     # Calculate points allocated and remaining
-    current_total = sum(st.session_state[f"stat_{stat}"] for stat in Stats)    
+    current_total = sum(st.session_state.character["abilityStats"].get(stat, 0) for stat in Stats)
     points_left = MaxPoints - current_total
 
     if points_left < 0:
         st.error(f"You have allocated too many points! Reduce by {-points_left}.")
     else:
         st.info(f"Points left to spend: {points_left}")
-
-    for stat in abilityBlock:
-        Stats[stat] = st.session_state[f"stat_{stat}"]
     
 
 def calcStatBlocks(st, rank, Stats, powers,traits):                       

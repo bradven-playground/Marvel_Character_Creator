@@ -34,9 +34,7 @@ def initialize_session_state(powers,origins,tags,traits,occupations):
             "tags": [],
             "occupation": [],
             "origin": [],
-            "avatar": None,
-            "selected_rank":None,
-            "add_power":False,
+            "avatar": None,                     
         }
 
     if "powerList" not in st.session_state:
@@ -60,21 +58,26 @@ def initialize_session_state(powers,origins,tags,traits,occupations):
 def input_character_info():
 
     # Input fields for character name and rank selection
-    st.session_state.character["name"] = st.text_input("Enter Character Name")    
+    st.session_state.character["name"] = st.text_input("Enter Character Name", value=st.session_state.character["name"])    
 
     # Selectbox with dedicated session key
+    if not st.session_state.character["rank"] is None:
+        rankIndex = list(Rank).index(st.session_state.character["rank"])
+    else:
+        rankIndex = 0
+
     st.session_state.character["rank"] = st.selectbox(
                                                     "Select Rank",
                                                     list(Rank),
                                                     format_func=lambda x: f"{x.name.title()} (Rank {x.value})",
-                                                    key="selected_rank"
+                                                    index = rankIndex
                                                     )
 
     
     
 def allocate_stats():
 
-    st.header(f"**Abilities**")
+    st.header(f"**Attributes**")
 
 
     AdjustStatBlock(st, 
@@ -148,7 +151,10 @@ def main():
     
     st.title("Marvel Multiverse TTRPG Character Creator")
 
-    characterTab, Origin_TraitTab,powerTab = st.tabs(["Character Sheet", "Origin/Occupation/Traits/Tags","Powers List"])
+    InfoTab, characterTab ,statTab, Origin_TraitTab,powerTab = st.tabs(["How to use","Character Sheet", "Attributes","Origin/Occupation/Traits/Tags","Powers List"])
+
+    with InfoTab:
+        displayInfo(st)
 
     with characterTab:        
         st.header("Character Sheet")
@@ -162,15 +168,17 @@ def main():
                     save_session_state(st)
 
             with cols[1]:
-                if st.button("Load"):
-                    print("load attempt")
+                if st.button("Load"):                    
                     load_session_state(st)
         
-        input_character_info()
+        
 
         if st.session_state.character["rank"]:
-            with st.expander("Abilities"):
-                allocate_stats()
+            st.subheader("Name: " + st.session_state.character["name"])
+            st.subheader(f"Rank:  {st.session_state.character["rank"].name.title()} (Rank {st.session_state.character["rank"].value})")
+            
+            with st.expander("Attributes"):
+                display_abilities(st)
             with st.expander("Stats"):
                 display_stats(st)
             with st.expander("Movement"):
@@ -185,6 +193,11 @@ def main():
                 display_traits(st)                                
             with st.expander("Tags"):
                 display_tags(st)                                        
+
+    with statTab:
+        st.button("Refresh", key='statRefresh')
+        input_character_info()
+        allocate_stats()
 
     with Origin_TraitTab:        
         st.header("Select an Origin Power")        
