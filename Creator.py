@@ -141,96 +141,108 @@ def export_character():
 def main():
 
 
-    powers = load_powers()
-    origins = load_origins()
-    tags = load_tags()
-    traits = load_traits()
-    occupations = load_occupations()
-
-    checkForLoadFile(st)
-
-    initialize_session_state(powers,origins,tags,traits,occupations)
-    
-    st.title("Marvel Multiverse TTRPG Character Creator")
-
-    InfoTab, characterTab ,statTab, Origin_TraitTab,powerTab = st.tabs(["How to use","Character Sheet", "Attributes","Origin/Occupation/Traits/Tags","Powers List"])
-
-    with InfoTab:
-        displayInfo(st)
-
-    with characterTab:        
-        st.header("Character Sheet")
-        st.button("Refresh", key='characterRefresh')
-            
-        with st.expander("Save / Load"):
-
-            cols = st.columns(3)
-            with cols[0]:
-                if st.button("Save"):
-                    save_session_state(st)
-
-            with cols[1]:
-                if st.button("Load"):                    
-                    load_session_state(st)
+    if "processing_lock" not in st.session_state:        
+        st.session_state.processing_lock = False
         
-            with cols[2]:
-                if st.button("Clear"):                    
-                    clear_session_state(st)
-        
+    #Lock hack to avoid session variable stomping on itself.
+    #      can tighten this up (so things are only locked when needed) if this slows things down too much
+    if not st.session_state.processing_lock:
+        st.session_state.processing_lock = True
 
-        if st.session_state.character["rank"]:
-            st.subheader("Name: " + st.session_state.character["name"])
-            st.subheader(f"Rank:  {st.session_state.character["rank"].name.title()} (Rank {st.session_state.character["rank"].value})")
+        #print ("lock")
+        powers = load_powers()
+        origins = load_origins()
+        tags = load_tags()
+        traits = load_traits()
+        occupations = load_occupations()
+
+        checkForLoadFile(st)
+
+        initialize_session_state(powers,origins,tags,traits,occupations)
+        
+        st.title("Marvel Multiverse TTRPG Character Creator")
+
+        InfoTab, characterTab ,statTab, Origin_TraitTab,powerTab = st.tabs(["How to use","Character Sheet", "Attributes","Origin/Occupation/Traits/Tags","Powers List"])
+
+        with InfoTab:
+            displayInfo(st)
+
+        with characterTab:        
+            st.header("Character Sheet")
+            st.button("Refresh", key='characterRefresh')
+                
+            with st.expander("Save / Load"):
+
+                cols = st.columns(3)
+                with cols[0]:
+                    if st.button("Save"):
+                        save_session_state(st)
+
+                with cols[1]:
+                    if st.button("Load"):                    
+                        load_session_state(st)
             
-            with st.expander("Attributes"):
-                display_abilities(st)
-            with st.expander("Stats"):
-                display_stats(st)
-            with st.expander("Movement"):
-                display_movement(st)    
-            with st.expander("Powers"):
-                display_powers(st)                        
-            with st.expander("Origin"):
-                display_origin(st)
-            with st.expander("Occupation"):
-                display_occupation(st)
+                with cols[2]:
+                    if st.button("Clear"):                    
+                        clear_session_state(st)
+            
+
+            if st.session_state.character["rank"]:
+                st.subheader("Name: " + st.session_state.character["name"])
+                st.subheader(f"Rank:  {st.session_state.character["rank"].name.title()} (Rank {st.session_state.character["rank"].value})")
+                
+                with st.expander("Attributes"):
+                    display_abilities(st)
+                with st.expander("Stats"):
+                    display_stats(st)
+                with st.expander("Movement"):
+                    display_movement(st)    
+                with st.expander("Powers"):
+                    display_powers(st)                        
+                with st.expander("Origin"):
+                    display_origin(st)
+                with st.expander("Occupation"):
+                    display_occupation(st)
+                with st.expander("Traits"):
+                    display_traits(st)                                
+                with st.expander("Tags"):
+                    display_tags(st)                                        
+
+        with statTab:
+            st.button("Refresh", key='statRefresh')
+            input_character_info()
+            allocate_stats()
+
+        with Origin_TraitTab:        
+            st.header("Select an Origin Power")        
+            # ... your entire power selection UI here ...
+            with st.expander("Origins"):
+                add_origins(st)
+            with st.expander("Occupations"):
+                add_occupations(st)        
             with st.expander("Traits"):
-                display_traits(st)                                
+                add_traits(st)
             with st.expander("Tags"):
-                display_tags(st)                                        
+                add_tags(st)        
 
-    with statTab:
-        st.button("Refresh", key='statRefresh')
-        input_character_info()
-        allocate_stats()
-
-    with Origin_TraitTab:        
-        st.header("Select an Origin Power")        
-        # ... your entire power selection UI here ...
-        with st.expander("Origins"):
-            add_origins(st)
-        with st.expander("Occupations"):
-            add_occupations(st)        
-        with st.expander("Traits"):
-            add_traits(st)
-        with st.expander("Tags"):
-            add_tags(st)        
-
-    with powerTab:
+        with powerTab:
+            
+            st.header("Select a Power")
+            st.button("Refresh", key='powerRefresh')
+            # ... your entire power selection UI here ...
+            add_powers(st)
+            
         
-        st.header("Select a Power")
-        st.button("Refresh", key='powerRefresh')
-        # ... your entire power selection UI here ...
-        add_powers(st)
         
+        
+        upload_avatar()
+        
+        display_character_summary()
+        
+        export_character()        
     
-    
-    
-    upload_avatar()
-    
-    display_character_summary()
-    
-    export_character()        
-    
+        #print ("unlock")
+        st.session_state.processing_lock = False
+
 if __name__ == "__main__":
     main()
