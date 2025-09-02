@@ -79,8 +79,7 @@ def AdjustStatBlock(st, Rank,Stats):
             new_value = st.number_input(
                 label=stat,
                 min_value=0,
-                max_value=MaxValue,
-                value=current_value,
+                max_value=MaxValue,                
                 key=f"input_{stat}",  # use unique keys for Streamlit widgets
             )
 
@@ -176,18 +175,21 @@ def adjustStats(adjustEntry,rank, CalcStats):
             modifyType = statAdjustDetails[0].lower()                    
             statAdjustParams = statAdjustDetails[1].split(";")
 
-            #split stat to modidy from the actual calculation
+            #split stat to modidy from the actual calculation            
             statToAdjust = statAdjustParams[0].strip()
             adjustParam = statAdjustParams[1].strip()
             
             #replace the stat with the one listed - take the higher of two
             if ("replace" in modifyType):
-                if (adjustParam.isnumeric()):
-                    CalcStats[statToAdjust] = max(CalcStats[statToAdjust],int(adjustParam))
+                
+                if (adjustParam.isnumeric()):                
+                    CalcStats[statToAdjust] = max(int(CalcStats[statToAdjust]),int(adjustParam))
+                    
                 elif ("rank" in adjustParam.lower()):
-                    CalcStats[statToAdjust] = max(CalcStats[statToAdjust],rank)
-                else:
-                    CalcStats[statToAdjust] = max(CalcStats[statToAdjust],CalcStats[adjustParam])
+                    CalcStats[statToAdjust] = max(int(CalcStats[statToAdjust]),int(rank))
+                    
+                else:                    
+                    CalcStats[statToAdjust] = max(int(CalcStats[statToAdjust]),int(CalcStats[adjustParam]))
 
             #Add the modifier to the base stat
             if ("add" in modifyType):                        

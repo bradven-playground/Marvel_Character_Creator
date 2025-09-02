@@ -17,13 +17,13 @@ def DisplayCharacterStats(st, rank, Ability,CalcStats):
         st.markdown(f"#### Reactions: {CalcStats['Reactions']}")
 
     st.markdown("--------------------")
-
+    
     df = pd.DataFrame({
         "##### Type": ["##### Melee", "##### Agility", "##### Resilience","##### Vigilance","##### Ego","##### Logic"],
         "##### Attack": [Ability['Melee'], Ability['Agility'], Ability['Resilience'], Ability['Vigilance'], Ability['Ego'], Ability['Logic']],        
         "##### Damage": [
                         "M x " + str(CalcStats['Melee Dmg Multiplier']+rank) + " + " + str(Ability['Melee']), 
-                        "M x " + str(CalcStats['Agility Dmg Multiplier']+rank) + " + " + str(Ability['Agility']), 
+                        "M x " + str(CalcStats['Agility Dmg Multiplier']+ rank) + " + " + str(Ability['Agility']), 
                         "-", 
                         "-", 
                         "M x " + str(CalcStats['Ego Dmg Multiplier']+rank) + " + " + str(Ability['Ego']), 
