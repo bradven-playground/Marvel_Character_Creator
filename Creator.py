@@ -139,6 +139,8 @@ def export_character():
     pass
 
 def main():
+
+
     powers = load_powers()
     origins = load_origins()
     tags = load_tags()
@@ -159,7 +161,7 @@ def main():
     with characterTab:        
         st.header("Character Sheet")
         st.button("Refresh", key='characterRefresh')
-               
+            
         with st.expander("Save / Load"):
 
             cols = st.columns(3)
@@ -228,7 +230,7 @@ def main():
     
     display_character_summary()
     
-    export_character()
+    export_character()        
     
 if __name__ == "__main__":
     main()

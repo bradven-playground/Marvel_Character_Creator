@@ -154,7 +154,8 @@ def display_traits(st):
     else:
         st.info(f"Powers traits: {traits_left}")
 
-    for traitItem in st.session_state.character["traits"]:
+    traitItems=st.session_state.character["traits"]
+    for traitItem in traitItems:
         with st.expander(traitItem["name"]):   
             DisplayTabularInfo(st,traitItem)
 
@@ -175,7 +176,8 @@ def display_traits(st):
                 
 def display_tags(st):
 
-    for tagItem in st.session_state.character["tags"]:
+    tagItems = st.session_state.character["tags"]
+    for tagItem in tagItems:
         with st.expander(tagItem["name"]):   
 
             DisplayTabularInfo(st,tagItem)
