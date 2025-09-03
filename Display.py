@@ -78,26 +78,20 @@ def display_powers(st):
     st.header(f"**Powers**")
     DisplayPowerInfo(st,st.session_state.character["powers"])
     
-    #The sysem rewards heros that stick to a few power sets, such that you can get extra power
-    # the math is totalPower = 5 x Rank + (Rank - Total Power Set (and 'basic doesn't count))
+    showPowerCount(st)
 
-
-    powerSetsInUse = getUniquePowerSets(st.session_state.character["powers"])
+def showPowerCount(st):
     
-    NumberOfCharacterPowerSet = len(powerSetsInUse)
-    
-    if "All" in powerSetsInUse:    
-        NumberOfCharacterPowerSet -= 1 #remove one for the 'all' category        
-        
-    if "Basic" in powerSetsInUse:    
-        NumberOfCharacterPowerSet -= 1 #remove one for the 'Basic' category
-            
-    Rank = int(st.session_state.character["rank"].value)
+    powers_left = calcPowerChoicesRemaining(st)
+    traits_left = calcTraitChoicesRemaining(st)
+    stats_left = calcAttributeChoicesRemaining(st)
 
-    total_powers = len(st.session_state.character["powers"])
-
-    powers_left = ((Rank * 5) + (max(0,Rank - NumberOfCharacterPowerSet)) - total_powers)                   
+    if traits_left < 0:
+        powers_left += traits_left
     
+    if stats_left < 0:
+        powers_left += stats_left
+
     if powers_left < 0:
         st.error(f"You have too many powers! Reduce by {-powers_left}.")
     else:
@@ -146,8 +140,17 @@ def display_occupation(st):
                 
 def display_traits(st):
 
-    total_traits = len(st.session_state.character["traits"])
-    traits_left = (st.session_state.character["rank"].value) - total_traits
+    #since powers can be used for traits
+    traits_left = calcTraitChoicesRemaining(st)
+    powers_left = calcPowerChoicesRemaining(st)    
+    stats_left = calcAttributeChoicesRemaining(st)
+
+    traits_left += powers_left
+    
+    if stats_left < 0:
+        traits_left += stats_left
+
+    #traits_left = calcTraitChoicesRemaining(st) + calcPowerChoicesRemaining(st)
 
     if traits_left < 0:
         st.error(f"You have too many traits! Reduce by {-traits_left}.")
