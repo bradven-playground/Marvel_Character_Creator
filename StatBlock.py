@@ -65,50 +65,27 @@ def AdjustStatBlock(st, Rank,Stats):
     if "firstTimeLoad" not in st.session_state:
         st.session_state.firstTimeLoad = True
 
-    # --- Initialize session_state values ONLY if not already set ---
-    for stat in Stats:
-        if stat not in st.session_state.character["abilityStats"]:
-            st.session_state.character["abilityStats"][stat] = 0   
-
-            
+               
     # --- The stat block ---
     cols = st.columns(len(Stats) // 2)  # split into 2 columns for readability
 
-    if st.session_state.firstTimeLoad:
-        for idx, stat in enumerate(Stats):
-            with cols[idx % (len(Stats) // 2)]:
-                # Get the current value from the dictionary, default to 0 if missing
-                current_value = min(st.session_state.character["abilityStats"].get(stat, 0),MaxValue)
-                
-                # Display number input and capture new value
-                new_value = st.number_input(
-                    label=stat,
-                    min_value=0,
-                    max_value=MaxValue,   
-                    value = current_value,
-                    key=f"input_{stat}",  # use unique keys for Streamlit widgets
-                )
+    
+    for idx, stat in enumerate(Stats):
+        with cols[idx % (len(Stats) // 2)]:
+            # Get the current value from the dictionary, default to 0 if missing
+            current_value = min(st.session_state.character["abilityStats"].get(stat, 0),MaxValue)
+            
+            # Display number input and capture new value
+            new_value = st.number_input(
+                label=stat,
+                min_value=0,
+                max_value=MaxValue,   
+                value = current_value,
+                key=f"input_{stat}",  # use unique keys for Streamlit widgets
+            )
 
-            # Update the dictionary with the new value
-            st.session_state.character["abilityStats"][stat] = new_value
-
-    else:
-         for idx, stat in enumerate(Stats):
-            with cols[idx % (len(Stats) // 2)]:
-                # Get the current value from the dictionary, default to 0 if missing
-                current_value = min(st.session_state.character["abilityStats"].get(stat, 0),MaxValue)
-                
-                # Display number input and capture new value
-                new_value = st.number_input(
-                    label=stat,
-                    min_value=0,                    
-                    value = current_value,
-                    key=f"input_{stat}",  # use unique keys for Streamlit widgets
-                )
-
-            # Update the dictionary with the new value
-            st.session_state.character["abilityStats"][stat] = new_value
-
+        # Update the dictionary with the new value
+        st.session_state.character["abilityStats"][stat] = new_value
     # Calculate points allocated and remaining (sine powers can be used for attributes)
     #points_left = calcAttributeChoicesRemaining(st) + calcPowerChoicesRemaining(st)
     #since powers can be used for traits
@@ -127,7 +104,6 @@ def AdjustStatBlock(st, Rank,Stats):
     else:
         st.info(f"Points left to spend: {points_left}")
     
-    st.session_state.firstTimeLoad = False
 
 def calcStatBlocks(st, rank, Stats, powers,traits):                       
     CalcStats = calculate_stats(rank, Stats, powers,traits)
