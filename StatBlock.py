@@ -1,5 +1,6 @@
 from enum import Enum
 import pandas as pd
+from data_filter import *
 
 abilityBlock = ["Melee", 
              "Agility", 
@@ -58,43 +59,75 @@ class Rank(Enum):
     COSMIC = 6
     
 def AdjustStatBlock(st, Rank,Stats):
-    MaxPoints = Rank * 5
+    
     MaxValue = 3 + Rank
 
+    if "firstTimeLoad" not in st.session_state:
+        st.session_state.firstTimeLoad = True
 
     # --- Initialize session_state values ONLY if not already set ---
     for stat in Stats:
         if stat not in st.session_state.character["abilityStats"]:
             st.session_state.character["abilityStats"][stat] = 0   
+
             
     # --- The stat block ---
     cols = st.columns(len(Stats) // 2)  # split into 2 columns for readability
 
-    for idx, stat in enumerate(Stats):
-        with cols[idx % (len(Stats) // 2)]:
-            # Get the current value from the dictionary, default to 0 if missing
-            current_value = min(st.session_state.character["abilityStats"].get(stat, 0),MaxValue)
-            
-            # Display number input and capture new value
-            new_value = st.number_input(
-                label=stat,
-                min_value=0,
-                max_value=MaxValue,                
-                key=f"input_{stat}",  # use unique keys for Streamlit widgets
-            )
+    if st.session_state.firstTimeLoad:
+        for idx, stat in enumerate(Stats):
+            with cols[idx % (len(Stats) // 2)]:
+                # Get the current value from the dictionary, default to 0 if missing
+                current_value = min(st.session_state.character["abilityStats"].get(stat, 0),MaxValue)
+                
+                # Display number input and capture new value
+                new_value = st.number_input(
+                    label=stat,
+                    min_value=0,
+                    max_value=MaxValue,   
+                    value = current_value,
+                    key=f"input_{stat}",  # use unique keys for Streamlit widgets
+                )
 
-        # Update the dictionary with the new value
-        st.session_state.character["abilityStats"][stat] = new_value
+            # Update the dictionary with the new value
+            st.session_state.character["abilityStats"][stat] = new_value
 
-    # Calculate points allocated and remaining
-    current_total = sum(st.session_state.character["abilityStats"].get(stat, 0) for stat in Stats)
-    points_left = MaxPoints - current_total
+    else:
+         for idx, stat in enumerate(Stats):
+            with cols[idx % (len(Stats) // 2)]:
+                # Get the current value from the dictionary, default to 0 if missing
+                current_value = min(st.session_state.character["abilityStats"].get(stat, 0),MaxValue)
+                
+                # Display number input and capture new value
+                new_value = st.number_input(
+                    label=stat,
+                    min_value=0,                    
+                    value = current_value,
+                    key=f"input_{stat}",  # use unique keys for Streamlit widgets
+                )
 
+            # Update the dictionary with the new value
+            st.session_state.character["abilityStats"][stat] = new_value
+
+    # Calculate points allocated and remaining (sine powers can be used for attributes)
+    #points_left = calcAttributeChoicesRemaining(st) + calcPowerChoicesRemaining(st)
+    #since powers can be used for traits
+    points_left = calcAttributeChoicesRemaining(st)
+    traits_left = calcTraitChoicesRemaining(st)
+    powers_left = calcPowerChoicesRemaining(st)    
+    
+
+    if traits_left < 0:
+        points_left += traits_left
+    
+    points_left += powers_left
+   
     if points_left < 0:
         st.error(f"You have allocated too many points! Reduce by {-points_left}.")
     else:
         st.info(f"Points left to spend: {points_left}")
     
+    st.session_state.firstTimeLoad = False
 
 def calcStatBlocks(st, rank, Stats, powers,traits):                       
     CalcStats = calculate_stats(rank, Stats, powers,traits)

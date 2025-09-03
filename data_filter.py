@@ -121,3 +121,37 @@ def addRelatedField(st,selected_entry, entryKey, dictToAddFrom, dictToAddTo):
         
                         dictToAddTo.append(entry)
 
+
+
+def calcPowerChoicesRemaining(st):
+
+    #The sysem rewards heros that stick to a few power sets, such that you can get extra power
+    # the math is totalPower = 5 x Rank + (Rank - Total Power Set (and 'basic doesn't count))
+
+    powerSetsInUse = getUniquePowerSets(st.session_state.character["powers"])
+    
+    NumberOfCharacterPowerSet = len(powerSetsInUse)
+    
+    if "All" in powerSetsInUse:    
+        NumberOfCharacterPowerSet -= 1 #remove one for the 'all' category        
+        
+    if "Basic" in powerSetsInUse:    
+        NumberOfCharacterPowerSet -= 1 #remove one for the 'Basic' category
+            
+    Rank = int(st.session_state.character["rank"].value)
+
+    total_powers = len(st.session_state.character["powers"])
+
+    return ((Rank * 4) + (max(0,Rank - NumberOfCharacterPowerSet)) - total_powers)
+
+def calcAttributeChoicesRemaining(st):
+    
+    MaxPoints = st.session_state.character["rank"].value * 5
+    current_total = sum(st.session_state.character["abilityStats"].get(stat, 0) for stat in st.session_state.character["abilityStats"])   
+    
+    return MaxPoints - current_total
+
+def calcTraitChoicesRemaining(st):
+    total_traits = len(st.session_state.character["traits"])
+    traits_left = (st.session_state.character["rank"].value) - total_traits      
+    return traits_left 
