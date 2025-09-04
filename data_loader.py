@@ -89,3 +89,4 @@ def load_occupations_from_xml(filepath):
             "traits": get_child_text(Occupation_elem, "traits"),                
         })
     return Occupations
+
