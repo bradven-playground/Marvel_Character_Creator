@@ -56,7 +56,7 @@ def checkForLoadFile(st):
 
 def UploadHeroPic(st):
     
-    uploaded_ava_file = st.file_uploader("Choose an avatar to upload", key="uploaded_avatar_file")
+    uploaded_ava_file = st.file_uploader("Choose an avatar to upload", type=["png", "jpg", "jpeg"],key="uploaded_avatar_file")
     #if uploaded_ava_file is not None:
     st.session_state.character["avatar"]= uploaded_ava_file   
 
