@@ -4,6 +4,7 @@ from Display import *
 from data_loader import *
 from data_filter import *
 from file import *
+from PIL import Image
 
 def load_powers():
     return load_powers_from_xml('Powers_1.3.xml')
@@ -50,10 +51,10 @@ def initialize_session_state(powers,origins,tags,traits,occupations):
         st.session_state.traitList = traits
 
     if "occupationList" not in st.session_state:
-        st.session_state.occupationList = occupations    
-
-  
+        st.session_state.occupationList = occupations      
         
+    if "clear_flag" not in st.session_state:
+        st.session_state.clear_flag = False
 
 def input_character_info():
 
@@ -170,27 +171,23 @@ def main():
         with characterTab:        
             st.header("Character Sheet")
             st.button("Refresh", key='characterRefresh')
-                
-            with st.expander("Save / Load"):
-
-                cols = st.columns(3)
-                with cols[0]:
-                    if st.button("Save"):
-                        save_session_state(st)
-
-                with cols[1]:
-                    if st.button("Load"):                    
-                        load_session_state(st)
-            
-                with cols[2]:
-                    if st.button("Clear"):                    
-                        clear_session_state(st)
-            
+                       
 
             if st.session_state.character["rank"]:
-                st.subheader("Name: " + st.session_state.character["name"])
-                st.subheader(f"Rank:  {st.session_state.character["rank"].name.title()} (Rank {st.session_state.character["rank"].value})")
-                
+
+                cols = st.columns(2)
+
+                with cols[0]:
+                    st.subheader("Name: " + st.session_state.character["name"])
+                    st.subheader(f"Rank:  {st.session_state.character["rank"].name.title()} (Rank {st.session_state.character["rank"].value})")
+
+                with cols[1]:
+                    if st.session_state.character["avatar"] is not None:
+                        print("oops")
+                        print(st.session_state.character["avatar"])
+                        image = Image.open(st.session_state.character["avatar"])
+                        st.image(image)                        
+
                 with st.expander("Attributes"):
                     display_abilities(st)
                 with st.expander("Stats"):
@@ -207,6 +204,23 @@ def main():
                     display_traits(st)                                
                 with st.expander("Tags"):
                     display_tags(st)                                        
+
+            with st.expander("Save / Load"):
+
+                cols = st.columns(3)
+                with cols[2]:
+                    if st.button("Save"):
+                        save_session_state(st)
+
+                with cols[0]:
+                    load_session_state(st)
+            
+                #with cols[1]:
+                    #if st.button("Clear"):                    
+                        #clear_session_state(st)
+
+                with cols[1]:                                      
+                    UploadHeroPic(st)
 
         with statTab:
             st.button("Refresh", key='statRefresh')
