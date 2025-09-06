@@ -76,9 +76,10 @@ def DisplayPowerInfo(st,powers):
 
 def display_powers(st):
     st.header(f"**Powers**")
+    showPowerCount(st)
     DisplayPowerInfo(st,st.session_state.character["powers"])
     
-    showPowerCount(st)
+    
 
 def showPowerCount(st):
     
@@ -155,7 +156,7 @@ def display_traits(st):
     if traits_left < 0:
         st.error(f"You have too many traits! Reduce by {-traits_left}.")
     else:
-        st.info(f"Powers traits: {traits_left}")
+        st.info(f"Rraits Choices Left: {traits_left}")
 
     traitItems=st.session_state.character["traits"]
     for traitItem in traitItems:
@@ -238,6 +239,17 @@ def getDictEntryFromSelect(st, selectBoxText, keyName, dictList):
     if selected_dictEntry:
         return selected_dictEntry
 
+def setBackgroundColour(st):
+    st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #BF0000; /* Replace with your desired color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 def displayInfo(st):
     st.title("Information")
@@ -250,15 +262,22 @@ def displayInfo(st):
 
     st.header("Attributes Tab")
     st.markdown("The attributes tab lets you adjust the hero's name,rank,and stats/attributes\n\n" \
-    "Note: Changing Rank doesn't allways stick, you may have to select it a second time")
+    "Note: Changing Rank/Attributes doesn't allways stick, you may have to select it a second time.")
 
     st.header("Origin/Occupation/Traits/Tags Tab")
-    st.markdown("The Origin/Occupation/Traits/Tags tab lets you select the heros Origin, Occupation, Traits, and Tags" \
+    st.markdown("The Origin/Occupation/Traits/Tags tab lets you select the heroes Origin, Occupation, Traits, and Tags" \
     ". They will be displayed on the Character Sheet.")
 
     st.header("Powers List Tab")
     st.markdown("The Powers List is where you can select power to add to your hero. Select the power set you want to choose from," \
-    " then the power you'd like to add.  Any power missing the pre-requsist should show what you're missing and won't be addable unless" \
-    " those prerequisits are met.\n\nYou will likely need to click the 'Refresh' button to see change to the pre-requisites" \
+    " then the power you'd like to add.  Any power missing the pre-requisite uisite should show what you're missing and won't be addable unless" \
+    " those pre-requisites are met.\n\nYou will likely need to click the 'Refresh' button to see change to the pre-requisites" \
     "after adding a new power")
     
+    st.header("Save/Load Tab")
+    st.markdown("This is where you can upload and save heroes, including upload a picture for their avatar" \
+    " For some reason, the load isn't working on mobile./n/nIF you want to edit a character you've loaded, you'll need to click the" \
+    " 'x' to 'unload' the character in the load box, or it will revert any edit you try to do.")
+
+def loadBanner(st):
+    st.image("banner.png")
