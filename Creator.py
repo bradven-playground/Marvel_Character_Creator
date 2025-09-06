@@ -58,6 +58,8 @@ def initialize_session_state(powers,origins,tags,traits,occupations):
 
 def input_character_info():
 
+    st.header(f"**Hero Information**")
+
     # Input fields for character name and rank selection
     st.session_state.character["name"] = st.text_input("Enter Character Name", value=st.session_state.character["name"])    
 
@@ -126,22 +128,10 @@ def add_powers(st):
                 if selected_power not in st.session_state.character["powers"]:
                     st.session_state.character["powers"].append(selected_power)     
 
-def upload_avatar():
-    # File uploader for avatar image and display preview
-    pass
-
-def display_character_summary():
-    # Show assembled character info: name, rank, stats, powers, traits, avatar
-    # Highlight validation errors if any
-    pass
-
-def export_character():
-    # Option to export character data to JSON, PDF, or other formats
-    pass
 
 def main():
 
-
+    setBackgroundColour(st)
     if "processing_lock" not in st.session_state:        
         st.session_state.processing_lock = False
         
@@ -161,9 +151,9 @@ def main():
 
         initialize_session_state(powers,origins,tags,traits,occupations)
         
-        st.title("Marvel Multiverse TTRPG Character Creator")
+        loadBanner(st)
 
-        InfoTab, characterTab ,statTab, Origin_TraitTab,powerTab = st.tabs(["How to use","Character Sheet", "Attributes","Origin/Occupation/Traits/Tags","Powers List"])
+        characterTab,statTab, Origin_TraitTab,powerTab,InfoTab = st.tabs(["Character Sheet","Attributes","Origin/Occupation/Traits/Tags","Powers List","How to use"])
 
         with InfoTab:
             displayInfo(st)
@@ -188,22 +178,24 @@ def main():
                         image = Image.open(st.session_state.character["avatar"])
                         st.image(image)                        
 
-                with st.expander("Attributes"):
-                    display_abilities(st)
+                #with st.expander("Attributes"):
+                #    display_abilities(st)
                 with st.expander("Stats"):
                     display_stats(st)
-                with st.expander("Movement"):
-                    display_movement(st)    
+                    with st.expander("Movement"):
+                        display_movement(st)    
                 with st.expander("Powers"):
-                    display_powers(st)                        
-                with st.expander("Origin"):
-                    display_origin(st)
-                with st.expander("Occupation"):
-                    display_occupation(st)
+                    display_powers(st)           
                 with st.expander("Traits"):
-                    display_traits(st)                                
-                with st.expander("Tags"):
-                    display_tags(st)                                        
+                    display_traits(st)                
+                with st.expander("Origin/Occupation/Tags"):
+                    with st.expander("Origin"):
+                        display_origin(st)
+                    with st.expander("Occupation"):
+                        display_occupation(st)
+                                
+                    with st.expander("Tags"):
+                        display_tags(st)                                        
 
             with st.expander("Save / Load"):
 
@@ -228,7 +220,7 @@ def main():
             allocate_stats()
 
         with Origin_TraitTab:        
-            st.header("Select an Origin Power")        
+            st.header("Add an Origin, Occupation, Trait, or Tag")        
             # ... your entire power selection UI here ...
             with st.expander("Origins"):
                 add_origins(st)
@@ -241,19 +233,11 @@ def main():
 
         with powerTab:
             
-            st.header("Select a Power")
+            st.header("Add a Power")
             st.button("Refresh", key='powerRefresh')
             # ... your entire power selection UI here ...
             add_powers(st)
-            
-        
-        
-        
-        upload_avatar()
-        
-        display_character_summary()
-        
-        export_character()        
+               
     
         #print ("unlock")
         st.session_state.processing_lock = False
