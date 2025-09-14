@@ -165,7 +165,7 @@ def main():
 
             if st.session_state.character["rank"]:
 
-                cols = st.columns(2)
+                cols = st.columns(2, vertical_alignment="center")
 
                 with cols[0]:
                     st.subheader("Name: " + st.session_state.character["name"])
@@ -199,7 +199,7 @@ def main():
 
             with st.expander("Save / Load"):
 
-                cols = st.columns(3)
+                cols = st.columns(3, vertical_alignment="center")
                 with cols[2]:
                     if st.button("Save"):
                         save_session_state(st)

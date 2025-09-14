@@ -67,7 +67,7 @@ def AdjustStatBlock(st, Rank,Stats):
 
                
     # --- The stat block ---
-    cols = st.columns(len(Stats) // 2)  # split into 2 columns for readability
+    cols = st.columns(len(Stats) // 2, vertical_alignment="center")  # split into 2 columns for readability
 
     
     for idx, stat in enumerate(Stats):

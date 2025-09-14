@@ -11,9 +11,9 @@ def DisplayCharacterStats(st, rank, Ability,CalcStats):
         st.markdown(f"#### Actions: {CalcStats['Actions']}")
 
     with cols[1]:
-        st.markdown(f"##### Health Dmg Reduction: {CalcStats['Health Dmg Reduction']}")
-        st.markdown(f"##### Focus Dmg Reduction: {CalcStats['Focus Dmg Reduction']}")
-        st.markdown(f"##### ")
+        st.markdown(f"#### Health Dmg Reduction: {CalcStats['Health Dmg Reduction']}")
+        st.markdown(f"#### Focus Dmg Reduction: {CalcStats['Focus Dmg Reduction']}")
+        st.markdown(f"#### ")
         st.markdown(f"#### Reactions: {CalcStats['Reactions']}")
 
     st.markdown("--------------------")
@@ -113,7 +113,7 @@ def showPowerCount(st):
 
 def display_abilities(st):
      
-    cols = st.columns(2) # split into 2 columns for readability
+    cols = st.columns(2, vertical_alignment="center") # split into 2 columns for readability
     
     for idx, (stat,value) in enumerate(st.session_state.character["abilityStats"].items()):
         with cols[idx % 2]:            
