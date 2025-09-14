@@ -155,3 +155,16 @@ def calcTraitChoicesRemaining(st):
     total_traits = len(st.session_state.character["traits"])
     traits_left = (st.session_state.character["rank"].value) - total_traits      
     return traits_left 
+
+def getDictEntryFromSelect(st, selectBoxText, keyName, dictList):
+
+    getAllKeyValues = [KeyValues[keyName] for KeyValues in dictList]
+    
+    selected_KeyValues = st.selectbox(selectBoxText, options=sorted(key.strip() for key in getAllKeyValues))   
+    
+    selected_dictEntry = next(
+                            (KeyValue for KeyValue in dictList if KeyValue[keyName].strip() == selected_KeyValues),
+                            None
+                            )
+    if selected_dictEntry:
+        return selected_dictEntry

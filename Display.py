@@ -35,6 +35,12 @@ def DisplayCharacterStats(st, rank, Ability,CalcStats):
     })
 
     st.table(df)   
+
+    #df.style.set_properties(**{'text-align': 'center'}) 
+
+    #st.dataframe(df)
+
+    
                 
 def DisplayMovmentStats(st, rank, Ability,CalcStats): 
     
@@ -44,14 +50,21 @@ def DisplayMovmentStats(st, rank, Ability,CalcStats):
         "##### In Combat": [CalcStats['Combat Run Speed'], CalcStats['Combat Jump Speed'],CalcStats['Combat Flight Speed'],CalcStats['Climb Speed'],CalcStats['Swim Speed'],CalcStats['Combat Web Swing Speed'],CalcStats['Combat Glide Speed'],CalcStats['Combat Teleport Speed']],            
         "##### Out of Combat": [CalcStats['Run Speed'], CalcStats['Jump Speed'],CalcStats['Flight Speed'],CalcStats['Climb Speed'],CalcStats['Swim Speed'],CalcStats['Web Swing Speed'],CalcStats['Glide Speed'],CalcStats['Teleport Speed']],                  
         })
-    st.table(df) 
-            
+    
+    st.table(df)   
+
+    #styled = df.style.background_gradient(cmap="Blues").highlight_max(axis=0)
+    #st.dataframe(styled)
+
+    
 
 def DisplayTabularInfo(st,Info):
 
     if Info:        
         df = pd.DataFrame(list(Info.items()), columns=['Stat', 'Value'])
-        st.dataframe(df)
+        #st.dataframe(df)
+        styled_df = df.style.set_properties(**{'text-align': 'left'})
+        st.dataframe(styled_df)
         
 
 def DisplayPowerInfo(st,powers):
@@ -156,7 +169,7 @@ def display_traits(st):
     if traits_left < 0:
         st.error(f"You have too many traits! Reduce by {-traits_left}.")
     else:
-        st.info(f"Rraits Choices Left: {traits_left}")
+        st.info(f"Traits Choices Left: {traits_left}")
 
     traitItems=st.session_state.character["traits"]
     for traitItem in traitItems:
@@ -226,25 +239,14 @@ def add_tags(st):
             st.session_state.character["tags"].append(selected_tag)
             addRelated(st,selected_tag)
 
-def getDictEntryFromSelect(st, selectBoxText, keyName, dictList):
 
-    getAllKeyValues = [KeyValues[keyName] for KeyValues in dictList]
-    
-    selected_KeyValues = st.selectbox(selectBoxText, options=sorted(key.strip() for key in getAllKeyValues))   
-    
-    selected_dictEntry = next(
-                            (KeyValue for KeyValue in dictList if KeyValue[keyName].strip() == selected_KeyValues),
-                            None
-                            )
-    if selected_dictEntry:
-        return selected_dictEntry
 
 def setBackgroundColour(st):
     st.markdown(
     """
     <style>
     .stApp {
-        background-color: #BF0000; /* Replace with your desired color */
+        background-color: #C00616; /* Replace with your desired color */
     }
     </style>
     """,
