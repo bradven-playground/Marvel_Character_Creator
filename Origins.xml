@@ -240,18 +240,6 @@
 	</Origin>
 
 	<Origin>
-	  <name>Mutant</name>
-	  <description>The character's powers spring from them being a member of the subspecies Homo superior. They have a latent X-Gene that grants them powers, often triggered at adolescence.</description>
-	  <examples>Cyclops, Jean Grey, Storm, Wolverine (Logan), Wolverine (Laura Kinney)</examples>
-	  <tags>Hounded, Krakoan, X-Gene</tags>
-	  <suggestedOccupation>none</suggestedOccupation>
-	  <traits>none</traits>
-	  <powers>none</powers>	  
-	  <preRequisites>none</preRequisites>
-	  <limitation>none</limitation>
-	</Origin>
-
-	<Origin>
 		<name>Mythic</name>
 		<description>The character is a creature or person Of myth and legend. While they may appear human, they are something else.</description>
 		<examples>Angela (Aldrif Odinsdottir),Fairies,Malekith</examples>		
